@@ -189,6 +189,10 @@ button{
     
 }
 
+.rarity{
+    font-size: 80%;
+}
+
 #cardtable1{
     background-color: rgb(255, 231, 200);
     display: inline-block;
