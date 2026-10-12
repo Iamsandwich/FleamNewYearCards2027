@@ -537,7 +537,7 @@ var cardR = CardRarityValue[imn].textContent;
             number:"1",
             rarity:2,
             stars:"★★",
-            effect:"IMG/Backgrounds/nodecor.png",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
             percent:"35",
         },
 
@@ -549,6 +549,26 @@ var cardR = CardRarityValue[imn].textContent;
             stars:"★",
             effect:"IMG/Backgrounds/nodecor.png",
             percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Swummy_3.jpg",
+            name:"The Swummy",
+            number:"3",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Bugaboo_4.jpg",
+            name:"The Bugaboo",
+            number:"4",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/holo2.gif",
+            percent:"10",
         },
         
     
@@ -623,9 +643,7 @@ var cardR = CardRarityValue[imn].textContent;
         preBuffer[i].appendChild(imageInfo[i]);
         imageInfo[i].classList.add('infotext');
 
-        CardEffect = document.createElement('div');
-        preBuffer[i].appendChild(CardEffect);
-        CardEffect.classList.add('gacha50cardeffect');
+        
 
         CardRarity[i] =  document.createElement('div');
         CardRarity[i].textContent = "Rarity: " + selectedElements[i].stars;
@@ -640,6 +658,10 @@ var cardR = CardRarityValue[imn].textContent;
         CardRarityValue[i].textContent = selectedElements[i].rarity;
         preBuffer[i].appendChild(CardRarityValue[i]);
         CardRarityValue[i].classList.add('rarityvalue');
+
+        CardEffect = document.createElement('div');
+        preBuffer[i].appendChild(CardEffect);
+        CardEffect.classList.add('gacha50cardeffect');
 
         
     

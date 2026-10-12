@@ -61,21 +61,21 @@ button{
   user-select: none; /* Standard syntax */
 
 }
+
+
 .gacha50cardeffect{
     background-image: url(IMG/Backgrounds/goldglimter.gif);
-    opacity: 20%;
+    opacity: 30%;
     width: 12vh;
     height: 15vh;
     position: absolute;
     display: block;
-     min-width: 100px;
+    min-width: 100px;
     min-height: 126px;
-    display: block;
-    position: absolute;
     text-align: center;
-    bottom:0.1vh;
+    bottom: 0.1vh;
     border-radius: 1vh;
-    mix-blend-mode: darken;
+    mix-blend-mode: overlay;
 }
 
 .gacha50card{
@@ -196,8 +196,8 @@ button{
 #cardtable1{
     background-color: rgb(255, 231, 200);
     display: inline-block;
-    width: 45vw;
-    height: 50vh;
+    width: 90vw;
+    height: 60vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -212,8 +212,8 @@ button{
 #cardtable2{
     background-color: rgb(75, 97, 147);
     display: inline-block;
-    width: 45vw;
-    height: 50vh;
+    width: 90vw;
+    height: 60vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -231,8 +231,8 @@ button{
 #cardtable3{
     background-image: repeating-linear-gradient(45deg, rgb(217, 178, 78),  rgb(255, 128, 93), rgb(184, 255, 136), rgb(170, 170, 255),  rgb(217, 178, 78));
     display: inline-block;
-    width: 45vw;
-    height: 50vh;
+    width: 90vw;
+    height: 60vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -250,8 +250,8 @@ button{
 #cardtable4{
     background-image: url(IMG/Backgrounds/velvet1.jpg);
     display: inline-block;
-    width: 45vw;
-    height: 50vh;
+    width: 90vw;
+    height: 60vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
