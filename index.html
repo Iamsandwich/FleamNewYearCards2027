@@ -602,24 +602,30 @@ var cardR = CardRarityValue[imn].textContent;
     var preBuffer = [];
     for (var i = 0, j = selectedElements.length; i < j; i++) {
         preBuffer[i] =  document.createElement('div');
-    
+        
         imageCard[i] = document.createElement('img');
         imageCard[i].src = selectedElements[i].image;
 
-       
+        
         
         imageInfo[i] =  document.createElement('div');
-        imageInfo[i].textContent = "Simple Card # " + selectedElements[i].number;
+        imageInfo[i].textContent = "Super Card # " + selectedElements[i].number;
 
         CardDecor[i] = document.createElement('img');
         CardDecor[i].src = selectedElements[i].effect;
 
         
+        
+    
+
         preBuffer[i].textContent = selectedElements[i].name;
         preBuffer[i].appendChild(imageCard[i]);
         preBuffer[i].appendChild(imageInfo[i]);
         imageInfo[i].classList.add('infotext');
 
+        CardEffect = document.createElement('div');
+        preBuffer[i].appendChild(CardEffect);
+        CardEffect.classList.add('gacha50cardeffect');
 
         CardRarity[i] =  document.createElement('div');
         CardRarity[i].textContent = "Rarity: " + selectedElements[i].stars;
@@ -634,6 +640,8 @@ var cardR = CardRarityValue[imn].textContent;
         CardRarityValue[i].textContent = selectedElements[i].rarity;
         preBuffer[i].appendChild(CardRarityValue[i]);
         CardRarityValue[i].classList.add('rarityvalue');
+
+        
     
                 }
    
@@ -686,62 +694,143 @@ var cardR = CardRarityValue[imn].textContent;
     //the crads
     var cards3 = [
         {
-            image:"IMG/Gacha100/",
+            image:"IMG/Gacha100",
             name:"The Mythtic",
-            number:"1"
+            number:"1",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
         },
 
     ];
 
-    //buffer
-    var imageInfo3 = [];
-    var imageCard3 = [];
-    var preBuffer3 = [];
-    for (var i = 0, j = cards3.length; i < j; i++) {
-        preBuffer3[i] =  document.createElement('div');
+                                var gen = Math.floor(Math.random() * 100);
+                        console.log("gen is " + gen);
+                        
+
+                        if (gen <= 2) {
+                        console.log('legendary (4)');
+                        var selectedElements = cards3.filter((cards3) => cards3.rarity == 4); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else if (gen <= 10) {
+                        console.log('very rare (3)');
+                        var selectedElements = cards3.filter((cards3) => cards3.rarity == 3); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+                        
+                        else if (gen <= 35) {
+                        console.log('rare (2)');
+                        var selectedElements = cards3.filter((cards3) => cards3.rarity == 2); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else {
+                        console.log('common (1)');
+                        var selectedElements = cards3.filter((cards3) => cards3.rarity == 1); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                       
+                        console.log("cards1 array = " , cards3);
+                       
+     
+
+                
+
     
-        imageCard3[i] = document.createElement('img');
-        imageCard3[i].src = cards3[i].image;
+                    //bufer
+        
+    var StarAmount = [];
+    var CardRarityValue = [];
+    var CardDecor = [];
+    var CardRarity = [];
+    var imageInfo = [];
+    var imageCard = [];
+    var preBuffer = [];
+    for (var i = 0, j = selectedElements.length; i < j; i++) {
+        preBuffer[i] =  document.createElement('div');
+    
+        imageCard[i] = document.createElement('img');
+        imageCard[i].src = selectedElements[i].image;
 
        
         
-        imageInfo3[i] =  document.createElement('div');
-        imageInfo3[i].textContent = "VIP Card # " + cards3[i].number;
+        imageInfo[i] =  document.createElement('div');
+        imageInfo[i].textContent = "VIP Card # " + selectedElements[i].number;
+
+        CardDecor[i] = document.createElement('img');
+        CardDecor[i].src = selectedElements[i].effect;
+
+        
+        preBuffer[i].textContent = selectedElements[i].name;
+        preBuffer[i].appendChild(imageCard[i]);
+        preBuffer[i].appendChild(imageInfo[i]);
+        imageInfo[i].classList.add('infotext');
+
+
+        CardRarity[i] =  document.createElement('div');
+        CardRarity[i].textContent = "Rarity: " + selectedElements[i].stars;
+        preBuffer[i].appendChild(CardRarity[i]);
+        CardRarity[i].classList.add('rarity');
+
+
+        preBuffer[i].appendChild(CardDecor[i]);
+        CardDecor[i].classList.add('cardDecor');
+
+        CardRarityValue[i] =  document.createElement('div');
+        CardRarityValue[i].textContent = selectedElements[i].rarity;
+        preBuffer[i].appendChild(CardRarityValue[i]);
+        CardRarityValue[i].classList.add('rarityvalue');
 
         CardEffect = document.createElement('div');
-        
-        preBuffer3[i].textContent = cards3[i].name;
-        preBuffer3[i].appendChild(imageCard3[i]);
-        preBuffer3[i].appendChild(imageInfo3[i]);
-
-        preBuffer3[i].appendChild(CardEffect);
+        preBuffer[i].appendChild(CardEffect);
         CardEffect.classList.add('gacha100cardeffect');
-
-        imageInfo3[i].classList.add('infotext');
-       
-    }
-   
-// create random image number
-  function getRandomInt3(min,max) 
-    {
-      //  return Math.floor(Math.random() * (max - min + 1)) + min;
     
-imn = Math.floor(Math.random() * (max - min + 1)) + min;
-    return preBuffer3[imn];
-    }  
+                }
+   
+
+
+
+ function getRandomInt(min,max) 
+                    {
+
+   //random number from the array
+imn = Math.floor((Math.random() * (max - min + 1)) + min);
+
+//end function, return value, final value basically
+
+    return preBuffer[imn];
+  }
 
 // 0 is first image,   preBuffer.length - 1) is  last image
-  
-var newCard3 = getRandomInt3(0, preBuffer3.length - 1);
+
+
+var newCard = getRandomInt(0, preBuffer.length - 1);
+
+
+var cardR = CardRarityValue[imn].textContent;
+
 
  
  // display the card  
-        newCard3.classList.add('gacha100card');
-        var Thecard3 = document.getElementById("card3")
+                     
+        newCard.classList.add('gacha100card');
+        var Thecard = document.getElementById("card3");  
 
-        document.getElementById("card3").appendChild(newCard3);
-    
+        console.log("rarity of card is " + cardR);
+        console.log("imn= "+(imn+1));
+        
+
+
+
+        document.getElementById("card3").appendChild(newCard);
+
+        
     };
+//
 
     
 // shuffle the card for 200 gacha
@@ -749,58 +838,145 @@ var newCard3 = getRandomInt3(0, preBuffer3.length - 1);
 {
     //the crads
     var cards4 = [
+
         {
-            image:"IMG/Gacha200/",
+            image:"IMG/Gacha200",
             name:"The Danger Snek",
-            number:"1"
+            number:"1",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
         },
 
     ];
 
-    //buffer
-    var imageInfo4 = [];
-    var imageCard4 = [];
-    var preBuffer4 = [];
-    for (var i = 0, j = cards4.length; i < j; i++) {
-        preBuffer4[i] =  document.createElement('div');
+    var gen = Math.floor(Math.random() * 100);
+                        console.log("gen is " + gen);
+                        
+
+                        if (gen <= 2) {
+                        console.log('legendary (4)');
+                        var selectedElements = cards4.filter((cards4) => cards4.rarity == 4); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else if (gen <= 10) {
+                        console.log('very rare (3)');
+                        var selectedElements = cards4.filter((cards4) => cards4.rarity == 3); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+                        
+                        else if (gen <= 35) {
+                        console.log('rare (2)');
+                        var selectedElements = cards4.filter((cards4) => cards4.rarity == 2); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else {
+                        console.log('common (1)');
+                        var selectedElements = cards4.filter((cards4) => cards4.rarity == 1); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                       
+                        console.log("cards1 array = " , cards4);
+                       
+     
+
+                
+
     
-        imageCard4[i] = document.createElement('img');
-        imageCard4[i].src = cards4[i].image;
+                    //bufer
+        
+    var StarAmount = [];
+    var CardRarityValue = [];
+    var CardDecor = [];
+    var CardRarity = [];
+    var imageInfo = [];
+    var imageCard = [];
+    var preBuffer = [];
+    for (var i = 0, j = selectedElements.length; i < j; i++) {
+        preBuffer[i] =  document.createElement('div');
+    
+        imageCard[i] = document.createElement('img');
+        imageCard[i].src = selectedElements[i].image;
 
        
         
-        imageInfo4[i] =  document.createElement('div');
-        imageInfo4[i].textContent = "Mega Card # " + cards4[i].number;
+        imageInfo[i] =  document.createElement('div');
+        imageInfo[i].textContent = "Mega Card # " + selectedElements[i].number;
+
+        CardDecor[i] = document.createElement('img');
+        CardDecor[i].src = selectedElements[i].effect;
 
         
-        preBuffer4[i].textContent = cards4[i].name;
-        preBuffer4[i].appendChild(imageCard4[i]);
-        preBuffer4[i].appendChild(imageInfo4[i]);
-        imageInfo4[i].classList.add('infotext');
-       
-    }
+        preBuffer[i].textContent = selectedElements[i].name;
+        preBuffer[i].appendChild(imageCard[i]);
+        preBuffer[i].appendChild(imageInfo[i]);
+        imageInfo[i].classList.add('infotext');
+
+
+        CardRarity[i] =  document.createElement('div');
+        CardRarity[i].textContent = "Rarity: " + selectedElements[i].stars;
+        preBuffer[i].appendChild(CardRarity[i]);
+        CardRarity[i].classList.add('rarity');
+
+
+        preBuffer[i].appendChild(CardDecor[i]);
+        CardDecor[i].classList.add('cardDecor');
+
+        CardRarityValue[i] =  document.createElement('div');
+        CardRarityValue[i].textContent = selectedElements[i].rarity;
+        preBuffer[i].appendChild(CardRarityValue[i]);
+        CardRarityValue[i].classList.add('rarityvalue');
+
+        CardEffect = document.createElement('div');
+        preBuffer[i].appendChild(CardEffect);
+        CardEffect.classList.add('gacha200cardeffect');
+    
+                }
    
-// create random image number
-  function getRandomInt4(min,max) 
-    {
-      //  return Math.floor(Math.random() * (max - min + 1)) + min;
-    
-imn = Math.floor(Math.random() * (max - min + 1)) + min;
-    return preBuffer4[imn];
-    }  
+
+
+
+ function getRandomInt(min,max) 
+                    {
+
+   //random number from the array
+imn = Math.floor((Math.random() * (max - min + 1)) + min);
+
+//end function, return value, final value basically
+
+    return preBuffer[imn];
+  }
 
 // 0 is first image,   preBuffer.length - 1) is  last image
-  
-var newCard4 = getRandomInt4(0, preBuffer4.length - 1);
+
+
+var newCard = getRandomInt(0, preBuffer.length - 1);
+
+
+var cardR = CardRarityValue[imn].textContent;
+
 
  
  // display the card  
-        newCard4.classList.add('gacha200card');
-        var Thecard4 = document.getElementById("card4")
+                     
+        newCard.classList.add('gacha200card');
+        var Thecard = document.getElementById("card4");  
 
-        document.getElementById("card4").appendChild(newCard4);
-    
+        console.log("rarity of card is " + cardR);
+        console.log("imn= "+(imn+1));
+        
+
+
+
+        document.getElementById("card4").appendChild(newCard);
+
+        
     };
+//
 
     //debug cheat button
         Cheat200.addEventListener("click", function () {

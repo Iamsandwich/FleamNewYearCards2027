@@ -75,6 +75,7 @@ button{
     text-align: center;
     bottom:0.1vh;
     border-radius: 1vh;
+    mix-blend-mode: darken;
 }
 
 .gacha50card{
