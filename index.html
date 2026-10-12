@@ -1,0 +1,1074 @@
+
+<!DOCTYPE html>
+<head>
+    <title>Fleam New Year Gacha cards</title>
+    <link rel="icon" type="image/x-icon" href="IMG/">
+    <link rel="stylesheet" href="styles.css">
+    
+
+<script src="jquery-1.9.0.js"></script>
+<script src="jquerymin.js"></script>
+
+<script src="jquery-ui.js"></script>
+<script src="jquery-ui.min.js"></script>
+
+
+<script src="touch_punch.js"></script>
+
+</head>
+
+
+<html>
+<body>
+</body> 
+
+  
+    <div>
+     
+        <h1>Press button to get coins!</h1>
+        <div id="buttonwrapper">
+        
+
+            <button id="button1" onclick="playRandomSound()">Get Some Coins</button>
+            <div>Your favourite table and cards can be moved!</div>
+            <br>
+            
+            <br> <button id="auto">Spend 200 coins for Auto-click!</button>
+                 <button id="auto2">Spend 1000 coins for Auto-click x2!</button>
+                 <button id="auto3">Spend 2000 coins for Auto-click x4!</button>
+                 <button id="Cheat1">Debug cheat button - get 200</button>
+            <br>
+          
+        </div>
+            <div id="list">
+                <h2>There are xx total cards! <br> How many did you get?</h2>
+                    <h3>
+                        Total coins <span id="display">0</span> 
+                    </h3>
+                    <h3>
+                       Available coins: <span id="coincount">0</span>
+                    </h3>
+                    <h4>
+                        Unique cards recieved: <span id="boycount" onchange="Fishy()">0</span>
+                    </h4>
+                    <h4>
+                        Cards total: <span id="totalboys">0</span>
+                    </h4>
+                    <h5>
+                        <div id="messages"></div>
+                    </h5>
+
+
+                    <button id="Gacha10">Spend 10 coins to spin the Simple gacha</button>
+
+                    <button id="Gacha50">Spend 50 coins to spin the Super gacha</button>
+
+                    <button id="Gacha100">Spend 100 coins to spin the VIP gacha</button>
+
+                    <button id="Gacha200">Spend 200 coins to spin the Mega gacha</button>
+
+                     <div id="cardtablefav", class="draggable">Favourites
+                        
+                        <div id="Tablefav">
+                            
+                        </div>
+                    </div>
+
+                    <br>
+                    <div id="cardtable1">Card table 1
+                        <div>Complete card collection : xx cards</div>
+                        <div id="Table1">
+                            <div id="card" class="draggable">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div id="cardtable2">Card table 2
+                        <div>Complete card collection : xx cards</div>
+                        <div id="Table2">
+                            <div id="card2" class="draggable">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                     <div id="cardtable3">Card table 3
+                        <div>Complete card collection : xx cards</div>
+                        <div id="Table3">
+                            <div id="card3" class="draggable">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="cardtable4">Card table 4
+                        <div>Complete card collection : xx cards</div>
+                        <div id="Table4">
+                            <div id="card4" class="draggable">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+    
+                    
+                    <div id="aquarium" style="height: 100vh; width: 200vh; position: absolute; z-index: -1;"></div>
+                   
+
+                   
+    </div>
+
+    
+<script>
+    // Wrap the module in a self-executing anonymous function
+// to avoid leaking variables into global scope:
+function draggablecards() {
+    // Enable ECMAScript 5 strict mode within this function:
+    'use strict';
+
+    // Obtain a node list of all elements that have class="draggable":
+    var draggable = document.querySelectorAll('.gacha10card,.gacha50card,.gacha100card,.gacha200card'),
+        draggableCount = draggable.length, // cache the length
+        i; // iterator placeholder
+
+    // This function initializes the drag of an element where an
+    // event ("mousedown") has occurred:
+    function startDrag(evt) {
+
+        // The element's position is based on its top left corner,
+        // but the mouse coordinates are inside of it, so we need
+        // to calculate the positioning difference:
+        var diffX = evt.clientX - this.offsetLeft,
+            diffY = evt.clientY - this.offsetTop,
+            that = this; // "this" refers to the current element,
+                         // let's keep it in cache for later use.
+
+        // moveAlong places the current element (referenced by "that")
+        // according to the current cursor position:
+        function moveAlong(evt) {
+            that.style.left = (evt.clientX - diffX) + 'px';
+            that.style.top = (evt.clientY - diffY) + 'px';
+        }
+
+        // stopDrag removes event listeners from the element,
+        // thus stopping the drag:
+        function stopDrag() {
+            document.removeEventListener('mousemove', moveAlong);
+            document.removeEventListener('mouseup', stopDrag);
+        }
+
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('mousemove', moveAlong);
+    }
+
+    // Now that all the variables and functions are created,
+    // we can go on and make the elements draggable by assigning
+    // a "startDrag" function to a "mousedown" event that occurs
+    // on those elements:
+    for (i = 0; i < draggableCount; i += 1) {
+        draggable[i].addEventListener('mousedown', startDrag);
+    }
+};
+</script>
+
+
+    <script type="text/javascript">
+        
+
+
+
+        let count = 0;
+        let coins = 0;
+
+        //messages for player
+        let messages = document.getElementById("messages");
+
+        //table for cards
+        let Table1 = document.getElementById("Table1");
+        //
+        
+        let cardImage = document.getElementById("cardImage");
+        let cardName = document.getElementById("cardName");
+        let cardNumber = document.getElementById("cardNumber");
+
+
+        //Get coin button
+        let btn = document.getElementById("button1");
+
+        //total clicks
+        let disp = document.getElementById("display");
+
+        //Gachas
+        let Gachabtn10 = document.getElementById("Gacha10");
+
+        let Gachabtn50 = document.getElementById("Gacha50");
+
+        let Gachabtn100 = document.getElementById("Gacha100");
+
+        let Gachabtn200 = document.getElementById("Gacha200");
+
+        //total coins
+        let MyTotalCoins = document.getElementById("coincount");
+
+        //debug cheats
+        let Cheat200 = document.getElementById("Cheat1");
+
+        //autoclicker timers
+        var myTimer;
+        var myTimer2;
+        var myTimer3;
+
+        //button for autoclicker 1
+        var autoclick1 = document.getElementById("auto");
+        var autoclick2 = document.getElementById("auto2");
+        var autoclick3 = document.getElementById("auto3");
+
+
+
+
+
+
+
+
+
+//
+        // shuffle the card  
+        function RandomCard1() 
+{
+    //the crads
+    var cards1 = [
+        {
+            image:"IMG/Gacha10/The _Goobler_1.jpg",
+            name:"The Goobler",
+            number:"1",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha10/The_Soob_2.jpg",
+            name:"The Soob",
+            number:"2",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/slowstarsblue.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha10/The_Gronkle_3.jpg",
+            name:"The Gronkle",
+            number:"3",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/slowstarsblue.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha10/The_Snorter_4.jpg",
+            name:"The Snorter",
+            number:"4",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha10/The_Seewee_5.jpg",
+            name:"The Seewee",
+            number:"5",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha10/The_Buzzo_6.jpg",
+            name:"The Buzzo",
+            number:"6",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Avy_7.jpg",
+            name:"The Avy",
+            number:"7",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/pinkstars.gif",
+            percent:"10",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Sqoon_8.jpg",
+            name:"The Sqoon",
+            number:"8",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/slowstarsblue.gif",
+            percent:"35",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Lovvy_9.jpg",
+            name:"The Lovvy",
+            number:"9",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha10/The_Gurnid_10.jpg",
+            name:"The Gurnid",
+            number:"10",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Shapple_11.jpg",
+            name:"The Shapple",
+            number:"11",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Slove_12.jpg",
+            name:"The Slove",
+            number:"12",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/slowstarsblue.gif",
+            percent:"40",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Fishle_13.jpg",
+            name:"The Fishle",
+            number:"13",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/pinkstars.gif",
+            percent:"10",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Daggle_14.jpg",
+            name:"The Daggle",
+            number:"14",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Sharkay_15.jpg",
+            name:"The Sharkay",
+            number:"15",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/slowstarsblue.gif",
+            percent:"35",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Clowny_16.jpg",
+            name:"The Clowny",
+            number:"16",
+            rarity:4,
+            stars:"★★★★",
+            effect:"IMG/Backgrounds/glitter swirl.gif",
+            percent:"2",
+        }
+    ];
+
+      
+                        var gen = Math.floor(Math.random() * 100);
+                        console.log("gen is " + gen);
+                        
+
+                        if (gen <= 2) {
+                        console.log('legendary (4)');
+                        var selectedElements = cards1.filter((cards1) => cards1.rarity == 4); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else if (gen <= 10) {
+                        console.log('very rare (3)');
+                        var selectedElements = cards1.filter((cards1) => cards1.rarity == 3); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+                        
+                        else if (gen <= 35) {
+                        console.log('rare (2)');
+                        var selectedElements = cards1.filter((cards1) => cards1.rarity == 2); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else {
+                        console.log('common (1)');
+                        var selectedElements = cards1.filter((cards1) => cards1.rarity == 1); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                       
+                        console.log("cards1 array = " , cards1);
+                       
+     
+
+                
+
+    
+                    //bufer
+        
+    var StarAmount = [];
+    var CardRarityValue = [];
+    var CardDecor = [];
+    var CardRarity = [];
+    var imageInfo = [];
+    var imageCard = [];
+    var preBuffer = [];
+    for (var i = 0, j = selectedElements.length; i < j; i++) {
+        preBuffer[i] =  document.createElement('div');
+    
+        imageCard[i] = document.createElement('img');
+        imageCard[i].src = selectedElements[i].image;
+
+       
+        
+        imageInfo[i] =  document.createElement('div');
+        imageInfo[i].textContent = "Simple Card # " + selectedElements[i].number;
+
+        CardDecor[i] = document.createElement('img');
+        CardDecor[i].src = selectedElements[i].effect;
+
+        
+        preBuffer[i].textContent = selectedElements[i].name;
+        preBuffer[i].appendChild(imageCard[i]);
+        preBuffer[i].appendChild(imageInfo[i]);
+        imageInfo[i].classList.add('infotext');
+
+
+        CardRarity[i] =  document.createElement('div');
+        CardRarity[i].textContent = "Rarity: " + selectedElements[i].stars;
+        preBuffer[i].appendChild(CardRarity[i]);
+        CardRarity[i].classList.add('rarity');
+
+
+        preBuffer[i].appendChild(CardDecor[i]);
+        CardDecor[i].classList.add('cardDecor');
+
+        CardRarityValue[i] =  document.createElement('div');
+        CardRarityValue[i].textContent = selectedElements[i].rarity;
+        preBuffer[i].appendChild(CardRarityValue[i]);
+        CardRarityValue[i].classList.add('rarityvalue');
+    
+                }
+   
+
+
+
+ function getRandomInt(min,max) 
+                    {
+
+   //random number from the array
+imn = Math.floor((Math.random() * (max - min + 1)) + min);
+
+//end function, return value, final value basically
+
+    return preBuffer[imn];
+  }
+
+// 0 is first image,   preBuffer.length - 1) is  last image
+
+
+var newCard = getRandomInt(0, preBuffer.length - 1);
+
+
+var cardR = CardRarityValue[imn].textContent;
+
+
+ 
+ // display the card  
+                     
+        newCard.classList.add('gacha10card');
+        var Thecard = document.getElementById("card");  
+
+        console.log("rarity of card is " + cardR);
+        console.log("imn= "+(imn+1));
+        
+
+
+
+        document.getElementById("card").appendChild(newCard);
+
+        
+    };
+//
+
+//list and shuffling for second gacha 
+
+ // shuffle the card for 50 gacha
+        function RandomCard2() 
+{
+    //the crads
+    var cards2 = [
+        {
+            image:"IMG/Gacha50/The_Nesse_1.jpg",
+            name:"The Nesse",
+            number:"1",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Starby_2.jpg",
+            name:"The Starby",
+            number:"2",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+        
+    
+
+    ];
+
+                            var gen = Math.floor(Math.random() * 100);
+                        console.log("gen is " + gen);
+                        
+
+                        if (gen <= 2) {
+                        console.log('legendary (4)');
+                        var selectedElements = cards2.filter((cards2) => cards2.rarity == 4); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else if (gen <= 10) {
+                        console.log('very rare (3)');
+                        var selectedElements = cards2.filter((cards2) => cards2.rarity == 3); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+                        
+                        else if (gen <= 35) {
+                        console.log('rare (2)');
+                        var selectedElements = cards2.filter((cards2) => cards2.rarity == 2); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                        else {
+                        console.log('common (1)');
+                        var selectedElements = cards2.filter((cards2) => cards2.rarity == 1); // Selecting elements that have percent more or equal to gen
+                        console.log("my new selected elements = " , selectedElements);
+                        }
+
+                       
+                        console.log("cards1 array = " , cards2);
+                       
+     
+
+                
+
+    
+                    //bufer
+        
+    var StarAmount = [];
+    var CardRarityValue = [];
+    var CardDecor = [];
+    var CardRarity = [];
+    var imageInfo = [];
+    var imageCard = [];
+    var preBuffer = [];
+    for (var i = 0, j = selectedElements.length; i < j; i++) {
+        preBuffer[i] =  document.createElement('div');
+    
+        imageCard[i] = document.createElement('img');
+        imageCard[i].src = selectedElements[i].image;
+
+       
+        
+        imageInfo[i] =  document.createElement('div');
+        imageInfo[i].textContent = "Simple Card # " + selectedElements[i].number;
+
+        CardDecor[i] = document.createElement('img');
+        CardDecor[i].src = selectedElements[i].effect;
+
+        
+        preBuffer[i].textContent = selectedElements[i].name;
+        preBuffer[i].appendChild(imageCard[i]);
+        preBuffer[i].appendChild(imageInfo[i]);
+        imageInfo[i].classList.add('infotext');
+
+
+        CardRarity[i] =  document.createElement('div');
+        CardRarity[i].textContent = "Rarity: " + selectedElements[i].stars;
+        preBuffer[i].appendChild(CardRarity[i]);
+        CardRarity[i].classList.add('rarity');
+
+
+        preBuffer[i].appendChild(CardDecor[i]);
+        CardDecor[i].classList.add('cardDecor');
+
+        CardRarityValue[i] =  document.createElement('div');
+        CardRarityValue[i].textContent = selectedElements[i].rarity;
+        preBuffer[i].appendChild(CardRarityValue[i]);
+        CardRarityValue[i].classList.add('rarityvalue');
+    
+                }
+   
+
+
+
+ function getRandomInt(min,max) 
+                    {
+
+   //random number from the array
+imn = Math.floor((Math.random() * (max - min + 1)) + min);
+
+//end function, return value, final value basically
+
+    return preBuffer[imn];
+  }
+
+// 0 is first image,   preBuffer.length - 1) is  last image
+
+
+var newCard = getRandomInt(0, preBuffer.length - 1);
+
+
+var cardR = CardRarityValue[imn].textContent;
+
+
+ 
+ // display the card  
+                     
+        newCard.classList.add('gacha50card');
+        var Thecard = document.getElementById("card2");  
+
+        console.log("rarity of card is " + cardR);
+        console.log("imn= "+(imn+1));
+        
+
+
+
+        document.getElementById("card2").appendChild(newCard);
+
+        
+    };
+//
+
+
+// shuffle the card for 100 gacha
+
+        function RandomCard3() 
+{
+    //the crads
+    var cards3 = [
+        {
+            image:"IMG/Gacha100/",
+            name:"The Mythtic",
+            number:"1"
+        },
+
+    ];
+
+    //buffer
+    var imageInfo3 = [];
+    var imageCard3 = [];
+    var preBuffer3 = [];
+    for (var i = 0, j = cards3.length; i < j; i++) {
+        preBuffer3[i] =  document.createElement('div');
+    
+        imageCard3[i] = document.createElement('img');
+        imageCard3[i].src = cards3[i].image;
+
+       
+        
+        imageInfo3[i] =  document.createElement('div');
+        imageInfo3[i].textContent = "VIP Card # " + cards3[i].number;
+
+        CardEffect = document.createElement('div');
+        
+        preBuffer3[i].textContent = cards3[i].name;
+        preBuffer3[i].appendChild(imageCard3[i]);
+        preBuffer3[i].appendChild(imageInfo3[i]);
+
+        preBuffer3[i].appendChild(CardEffect);
+        CardEffect.classList.add('gacha100cardeffect');
+
+        imageInfo3[i].classList.add('infotext');
+       
+    }
+   
+// create random image number
+  function getRandomInt3(min,max) 
+    {
+      //  return Math.floor(Math.random() * (max - min + 1)) + min;
+    
+imn = Math.floor(Math.random() * (max - min + 1)) + min;
+    return preBuffer3[imn];
+    }  
+
+// 0 is first image,   preBuffer.length - 1) is  last image
+  
+var newCard3 = getRandomInt3(0, preBuffer3.length - 1);
+
+ 
+ // display the card  
+        newCard3.classList.add('gacha100card');
+        var Thecard3 = document.getElementById("card3")
+
+        document.getElementById("card3").appendChild(newCard3);
+    
+    };
+
+    
+// shuffle the card for 200 gacha
+        function RandomCard4() 
+{
+    //the crads
+    var cards4 = [
+        {
+            image:"IMG/Gacha200/",
+            name:"The Danger Snek",
+            number:"1"
+        },
+
+    ];
+
+    //buffer
+    var imageInfo4 = [];
+    var imageCard4 = [];
+    var preBuffer4 = [];
+    for (var i = 0, j = cards4.length; i < j; i++) {
+        preBuffer4[i] =  document.createElement('div');
+    
+        imageCard4[i] = document.createElement('img');
+        imageCard4[i].src = cards4[i].image;
+
+       
+        
+        imageInfo4[i] =  document.createElement('div');
+        imageInfo4[i].textContent = "Mega Card # " + cards4[i].number;
+
+        
+        preBuffer4[i].textContent = cards4[i].name;
+        preBuffer4[i].appendChild(imageCard4[i]);
+        preBuffer4[i].appendChild(imageInfo4[i]);
+        imageInfo4[i].classList.add('infotext');
+       
+    }
+   
+// create random image number
+  function getRandomInt4(min,max) 
+    {
+      //  return Math.floor(Math.random() * (max - min + 1)) + min;
+    
+imn = Math.floor(Math.random() * (max - min + 1)) + min;
+    return preBuffer4[imn];
+    }  
+
+// 0 is first image,   preBuffer.length - 1) is  last image
+  
+var newCard4 = getRandomInt4(0, preBuffer4.length - 1);
+
+ 
+ // display the card  
+        newCard4.classList.add('gacha200card');
+        var Thecard4 = document.getElementById("card4")
+
+        document.getElementById("card4").appendChild(newCard4);
+    
+    };
+
+    //debug cheat button
+        Cheat200.addEventListener("click", function () {
+            coins = coins+200;
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+        });
+        
+
+    //clicking manually
+        btn.addEventListener("click", function () {
+            count++;
+            coins++;
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+        });
+
+    // 10 coin Gacha
+       Gachabtn10.addEventListener("click", function(){
+        if (coins>=10)
+       {   
+           //paying for the spin
+           console.log("you have bouhgt the 10 coin gacha spin!");
+           coins = coins - 10;
+           MyTotalCoins.innerHTML = coins;
+           messages.innerHTML = "you have bouhgt the 10 coin gacha spin!";
+           //this is where we need to put the random card picker code
+            
+            RandomCard1();
+            draggablecards();
+            
+            
+
+       }
+       else{
+           console.log("Not enough coin! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 10 coin gacha!";
+       }
+       }
+    )
+
+    //50 coin Gacha
+       Gachabtn50.addEventListener("click", function(){
+        if (coins>=50)
+       {   
+           //paying for the spin
+           console.log("you have bouhgt the 50 coin gacha spin!");
+           coins = coins - 50;
+           MyTotalCoins.innerHTML = coins;
+           messages.innerHTML = "you have bouhgt the 50 coin gacha spin!";
+           //this is where we need to put the random card picker code
+           RandomCard2();
+           draggablecards();
+       }
+       else{
+           console.log("Not enough coin! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 50 coin gacha!";
+       }
+       }
+    )
+
+     //100 coin Gacha
+       Gachabtn100.addEventListener("click", function(){
+        if (coins>=100)
+       {   
+           //paying for the spin
+           console.log("you have bouhgt the 100 coin gacha spin!");
+           coins = coins - 100;
+           MyTotalCoins.innerHTML = coins;
+           messages.innerHTML = "you have bouhgt the 100 coin gacha spin!";
+           //this is where we need to put the random card picker code
+           RandomCard3();
+           draggablecards();
+
+       }
+       else{
+           console.log("Not enough coin! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 100 coin gacha!";
+       }
+       }
+    )
+
+    //200 coin Gacha
+       Gachabtn200.addEventListener("click", function(){
+        if (coins>=200)
+       {   
+           //paying for the spin
+           console.log("you have bouhgt the 200 coin gacha spin!");
+           coins = coins - 200;
+           MyTotalCoins.innerHTML = coins;
+           messages.innerHTML = "you have bouhgt the 200 coin gacha spin!";
+           //this is where we need to put the random card picker code
+           RandomCard4();
+           draggablecards();
+
+       }
+       else{
+           console.log("Not enough coin! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 200 coin gacha!";
+       }
+       }
+    )
+
+
+
+    // auto clicker 
+        let btn4 = document.getElementById("auto");
+        let autoon = 0;
+        let clicked = 0;
+        btn4.addEventListener("click", function () {
+          if (autoon==0, clicked==0, coins>=200){
+            //paytime
+            coins = coins - 200;
+  clicked = 1;
+  autoon = 1;
+  console.log("clicked= ", clicked, "auto on= ", autoon);
+  messages.innerHTML = "Auto-Clicker 1 enabled";
+  autoclick1.disabled = true;
+          }
+          else if(coins<200){
+            console.log("Not enough coin! You only have:", coins, "you need 200");
+            messages.innerHTML = "Not enough coin for the auto clicker!";
+        }
+
+});
+
+//4 times clicker
+    let btn6 = document.getElementById("auto3");
+        let autoon3 = 0;
+        let clicked3 = 0;
+    btn6.addEventListener("click", function () {
+          if (autoon3==0, clicked3==0, coins>=2000){
+            //paytime
+            coins = coins - 2000;
+  clicked3 = 1;
+  autoon3 = 1;
+  console.log("clicked x4 = ", clicked3, "auto on x4 = ", autoon3);
+  messages.innerHTML = "Auto-Clicker 3 enabled";
+  autoclick3.disabled = true;
+
+}
+          else if (coins<2000) 
+          {  
+            console.log("Not enough coin! You only have:", coins, "you need 2000");
+            messages.innerHTML = "Not enough coin for the 4x auto clicker!";
+       
+          }
+});
+
+
+//double clicker
+let btn5 = document.getElementById("auto2");
+        let autoon2 = 0;
+        let clicked2 = 0;
+btn5.addEventListener("click", function () {
+          if (autoon2==0, clicked2==0, coins>=1000){
+            //paytime
+            coins = coins - 1000;
+  clicked2 = 1;
+  autoon2 = 1;
+  console.log("clicked x2 = ", clicked2, "auto on x2 = ", autoon2);
+  messages.innerHTML = "Auto-Clicker 2 enabled";
+  autoclick2.disabled = true;
+
+}
+          else if (coins<1000) 
+          {  
+            console.log("Not enough coin! You only have:", coins, "you need 1000");
+            messages.innerHTML = "Not enough coin for the double auto clicker!";
+       
+          }
+});
+
+        //auto clicker
+        document.getElementById("auto").onclick = Auto;
+        function Auto(){
+        if (autoon==1) {
+        myTimer = setInterval(
+        function Counting() {
+        document.getElementById('button1').click();
+        }, 1000)
+        }
+        else{
+        clearInterval(myTimer);
+        console.log("interval clearing")
+        }
+        };
+
+        //double clicker
+        document.getElementById("auto2").onclick = Auto2;
+        function Auto2(){
+        if (autoon2==1) {
+        myTimer2 = setInterval(
+        function Counting() {
+        document.getElementById('button1').click();
+        }, 500)
+        }
+        else{
+        clearInterval(myTimer2);
+        console.log("interval x2 clearing")
+        }
+        };
+
+        //4x clicker
+        document.getElementById("auto3").onclick = Auto3;
+        function Auto3(){
+        if (autoon3==1) {
+        myTimer3 = setInterval(
+        function Counting() {
+        document.getElementById('button1').click();
+        }, 250)
+        }
+        else{
+        clearInterval(myTimer3);
+        console.log("interval x4 clearing")
+        }
+        };
+
+        </script>
+
+<script type="text/javascript">
+function playRandomSound(){ 
+    var sounds = [
+       "Sounds/Click1.wav",
+       
+      ];
+     
+    var soundFile = sounds[Math.floor(Math.random()*sounds.length)];
+    document.getElementById("player").src= soundFile;
+    player.play();
+    console.log('playing sound!');
+    };
+
+
+
+
+
+
+//draggable???
+        const dragElements = document.querySelectorAll(".draggable"); 
+
+        function onMouseDrag(event, element) {
+            let leftValue = parseInt(window.getComputedStyle(element).left);
+            let topValue = parseInt(window.getComputedStyle(element).top);
+            element.style.left = `${leftValue + event.movementX}px`;
+            element.style.top = `${topValue + event.movementY}px`;
+        }
+
+        dragElements.forEach((element) => {
+            element.addEventListener("mousedown", (e) => {
+                const onMove = (event) => onMouseDrag(event, element); 
+
+                document.addEventListener("mousemove", onMove);
+                document.addEventListener("mouseup", () => {
+                    document.removeEventListener("mousemove", onMove);
+                }, { once: true });
+            });
+        });
+
+
+
+
+</script>
+
+
+
+
+
+    
+
+</body>

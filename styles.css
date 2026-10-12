@@ -1,0 +1,291 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: repeating-linear-gradient(0deg, rgb(255, 182, 182),  rgb(255, 148, 166),  rgb(255, 216, 154),  rgb(255, 182, 182)); 
+}
+
+button{
+    width: fit-content;
+    border-radius: 100vh;
+    border-style: solid;
+    border-width: 1vh;
+    height: 10vh;
+}
+
+#button1{
+  height: 10vh;
+  border-radius: 100vh;
+  border-color: rgb(54, 70, 31);
+  color: rgb(254, 254, 254);
+  background-image: repeating-linear-gradient(45deg, rgb(55, 125, 37), rgb(155, 255, 157))
+
+}
+
+#button1:hover{
+    color: rgb(144, 188, 136);
+    background-image: repeating-linear-gradient(45deg, rgb(44, 95, 31), rgb(53, 140, 55));
+    border-color: rgb(170, 205, 121);
+}
+
+#button1:active{
+    color: rgb(91, 130, 97);
+    background-image: repeating-linear-gradient(45deg, rgb(39, 82, 29), rgb(42, 111, 45))
+}
+
+
+
+
+#messages{
+    color: rgb(255, 94, 223);
+    text-shadow: 0 0 2px #000000, 0 0 5px #54154b, 0 0 15px #0000FF;
+    font-size: 2.5vh;
+  
+}
+
+.gacha10card{
+    background-color: antiquewhite;
+    border-radius: 1.5vh;
+    width: 12vh;
+    height: 15vh;
+    margin: 2vh;
+    min-width: 100px;
+    min-height: 126px;
+    display: block;
+    position: absolute;
+    text-align: center;
+    border-color: rgb(135, 75, 75);
+    border-width: 5px;
+    border-style: double;
+
+     -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+
+}
+.gacha50cardeffect{
+    background-image: url(IMG/Backgrounds/goldglimter.gif);
+    opacity: 20%;
+    width: 12vh;
+    height: 15vh;
+    position: absolute;
+    display: block;
+     min-width: 100px;
+    min-height: 126px;
+    display: block;
+    position: absolute;
+    text-align: center;
+    bottom:0.1vh;
+    border-radius: 1vh;
+}
+
+.gacha50card{
+    background-image:repeating-linear-gradient(45deg, gold, rgb(131, 124, 52), white,  gold);
+    border-radius: 1.5vh;
+    width: 12vh;
+    height: 15vh;
+    margin: 2vh;
+    min-width: 100px;
+    min-height: 126px;
+    display: block;
+    position: absolute;
+    text-align: center;
+    border-color: rgb(239, 185, 77);
+    border-width: 5px;
+    border-style: double;
+    color: #30305a;
+     -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.gacha100card{
+    background-image:repeating-linear-gradient(45deg, rgb(48, 17, 71), rgb(112, 46, 103), rgb(253, 138, 237), rgb(48, 17, 71));
+    border-radius: 1.5vh;
+    width: 12vh;
+    height: 15vh;
+    margin: 2vh;
+    min-width: 100px;
+    min-height: 126px;
+    display: block;
+    position: absolute;
+    text-align: center;
+    border-color: rgb(71, 21, 45);
+    border-width: 3px;
+    border-style:dashed;
+    color:  rgb(255, 188, 220);
+    text-shadow:  0px 0px 1px rgb(234, 247, 91), 0px 0px 2px rgb(247, 91, 166), 0px 0px 8px black;
+
+
+     -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.gacha100cardeffect{
+    background-image: url(IMG/Backgrounds/holo.gif);
+    opacity: 25%;
+    width: 12vh;
+    height: 15vh;
+    position: absolute;
+    display: block;
+     min-width: 100px;
+    min-height: 126px;
+    display: block;
+    position: absolute;
+    text-align: center;
+    bottom:0.1vh;
+    border-radius: 1vh;
+}
+
+.gacha200card{
+    background-image: url(IMG/Backgrounds/glimter.gif);
+    border-radius: 1.5vh;
+    width: 12vh;
+    height: 15vh;
+    margin: 2vh;
+    min-width: 100px;
+    min-height: 126px;
+    display: block;
+    position: absolute;
+    text-align: center;
+    border-color: rgb(85, 80, 84);
+    border-width: 3px;
+    border-style:solid;
+    color:  rgb(255, 188, 220);
+    text-shadow:  0px 0px 1px rgb(234, 247, 91), 0px 0px 2px rgb(247, 91, 166), 0px 0px 8px black;
+    font-size: 90%;
+
+     -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.gacha10card img , .gacha50card img , .gacha100card img, .gacha200card img, .cardDecor{
+    width: 80%;
+    margin-top: 10%;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.cardDecor{
+    margin-top: 10%;
+    border-radius: 10px;
+    pointer-events: none;
+    opacity: 60%;
+    mix-blend-mode:color-dodge;
+    width: 10%;
+    height: 50%;
+    position: absolute;
+    display: block;
+    bottom: 29%;
+    left: 10%;
+}
+
+
+
+
+.infotext{
+    font-size: 80%;
+    
+}
+
+#cardtable1{
+    background-color: rgb(255, 231, 200);
+    display: inline-block;
+    width: 45vw;
+    height: 50vh;
+    margin: 2vh;
+    min-width: 350px;
+    min-height: 220px;
+    text-align: center;
+    color: brown;
+    padding: 1vh;
+    border-radius: 20px;
+    font-size: 1,5vh;
+
+}
+
+#cardtable2{
+    background-color: rgb(75, 97, 147);
+    display: inline-block;
+    width: 45vw;
+    height: 50vh;
+    margin: 2vh;
+    min-width: 350px;
+    min-height: 220px;
+    text-align: center;
+    color: rgb(160, 199, 255);
+    padding: 1vh;
+    border-radius: 20px;
+    font-size: 1,5vh;
+    border-color: #30305a;
+    border-width: 1vh;
+    border-style: groove;
+
+}
+
+#cardtable3{
+    background-image: repeating-linear-gradient(45deg, rgb(217, 178, 78),  rgb(255, 128, 93), rgb(184, 255, 136), rgb(170, 170, 255),  rgb(217, 178, 78));
+    display: inline-block;
+    width: 45vw;
+    height: 50vh;
+    margin: 2vh;
+    min-width: 350px;
+    min-height: 220px;
+    text-align: center;
+    color: rgb(35, 35, 14);
+    padding: 1vh;
+    border-radius: 20px;
+    font-size: 1,5vh;
+    border-color:rgb(255, 207, 49);
+    border-width: 1vh;
+    border-style:double
+
+}
+
+#cardtable4{
+    background-image: url(IMG/Backgrounds/velvet1.jpg);
+    display: inline-block;
+    width: 45vw;
+    height: 50vh;
+    margin: 2vh;
+    min-width: 350px;
+    min-height: 220px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px gold;
+    padding: 1vh;
+    border-radius: 20px;
+    font-size: 1,5vh;
+    border-color:rgb(224, 61, 91);
+    border-width: 0.5vh;
+    border-style:dotted;
+
+}
+
+.rarityvalue{
+    display: none;
+}
+
+
+
+#cardtablefav{
+    display: inline-block;
+    position: absolute;
+
+    background-image: url(IMG/Backgrounds/pinkvelvet.jpg);
+    width: 45vw;
+    height: 50vh;
+    margin: 2vh;
+    min-width: 350px;
+    min-height: 220px;
+    text-align: center;
+    color: rgb(88, 21, 21);
+    text-shadow: 0 0 3px rgb(255, 215, 142), 0 0 5px rgb(255, 242, 171), 0 0 10px rgb(240, 237, 240);
+    padding: 1vh;
+    border-radius: 20px;
+    font-size: 1,5vh;
+    border-color:rgb(255, 214, 68);
+    border-width: 0.5vh;
+    border-style:double;
+    top:0;
+}
