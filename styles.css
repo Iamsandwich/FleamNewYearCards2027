@@ -59,6 +59,7 @@ button{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  font-size: 1.7vh;
 
 
   transform: scale(1);
@@ -103,6 +104,7 @@ button{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  font-size: 1.7vh;
 
   transform: scale(1);
   transition: transform 0.2s;
@@ -124,6 +126,7 @@ button{
     border-style:dashed;
     color:  rgb(255, 188, 220);
     text-shadow:  0px 0px 1px rgb(234, 247, 91), 0px 0px 2px rgb(247, 91, 166), 0px 0px 8px black;
+    font-size: 1.7vh;
 
 
      -webkit-user-select: none; /* Safari */
@@ -166,7 +169,7 @@ button{
     border-style:solid;
     color:  rgb(255, 188, 220);
     text-shadow:  0px 0px 1px rgb(234, 247, 91), 0px 0px 2px rgb(247, 91, 166), 0px 0px 8px black;
-    font-size: 90%;
+    font-size: 1.7vh;
 
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
