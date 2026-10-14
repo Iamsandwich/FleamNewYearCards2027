@@ -30,7 +30,7 @@
         
 
             <button id="button1" onclick="playRandomSound()">Get Some Coins</button>
-            <div>Your favourite table and cards can be moved!</div>
+            <div>Your favourite table and cards can be moved! Double-click to zoom in on the card, double click to zoom back out again.</div>
             <br>
             
             <br> <button id="auto">Spend 200 coins for Auto-click!</button>
@@ -75,8 +75,10 @@
                     </div>
 
                     <br>
+                    
                     <div id="cardtable1">Card table 1
-                        <div>Complete card collection : xx cards</div>
+                        <div>Your total Simple cards: <span id="cardcounttotalG10">0</span> </div>
+                        <div>Card colection: <span id="cardcollectionG10">0</span> out of 20</div>
                         <div id="Table1">
                             <div id="card" class="draggable">
                                 
@@ -86,7 +88,8 @@
 
                     
                     <div id="cardtable2">Card table 2
-                        <div>Complete card collection : xx cards</div>
+                        <div>Your total Super cards: <span id="cardcounttotalG50">0</span> </div>
+                        <div>Card colection: <span id="cardcollectionG50">0</span> out of 7</div>
                         <div id="Table2">
                             <div id="card2" class="draggable">
                                 
@@ -95,7 +98,9 @@
                     </div>
 
                      <div id="cardtable3">Card table 3
-                        <div>Complete card collection : xx cards</div>
+                        <div>Your total VIP cards: <span id="cardcounttotalG100">0</span> </div>
+                        <div>Card colection: <span id="cardcollectionG100">0</span> out of xx</div>
+
                         <div id="Table3">
                             <div id="card3" class="draggable">
                                 
@@ -104,7 +109,9 @@
                     </div>
 
                     <div id="cardtable4">Card table 4
-                        <div>Complete card collection : xx cards</div>
+                        <div>Your total Mega cards: <span id="cardcounttotalG200">0</span> </div>
+                        <div>Card colection: <span id="cardcollectionG200">0</span> out of xx</div>
+
                         <div id="Table4">
                             <div id="card4" class="draggable">
                                 
@@ -199,6 +206,26 @@ function draggablecards() {
 
         //total clicks
         let disp = document.getElementById("display");
+        //total cards gacha 10
+        let totalgacha10 = document.getElementById("cardcounttotalG10");
+        //unique card collection gacha 10
+        let collectiongacha10 = document.getElementById("cardcollectionG10");
+
+        //total cards gacha 50
+        let totalgacha50 = document.getElementById("cardcounttotalG50");
+        //unique card collection gacha 50
+        let collectiongacha50 = document.getElementById("cardcollectionG50");
+
+        //total cards gacha 100
+        let totalgacha100 = document.getElementById("cardcounttotalG100");
+        //unique card collection gacha 100
+        let collectiongacha100 = document.getElementById("cardcollectionG100");
+
+        //total cards gacha 200
+        let totalgacha200 = document.getElementById("cardcounttotalG200");
+        //unique card collection gacha 100
+        let collectiongacha200 = document.getElementById("cardcollectionG200");
+        
 
         //Gachas
         let Gachabtn10 = document.getElementById("Gacha10");
@@ -225,7 +252,8 @@ function draggablecards() {
         var autoclick2 = document.getElementById("auto2");
         var autoclick3 = document.getElementById("auto3");
 
-
+        //count cards got
+        
 
 
 
@@ -397,8 +425,48 @@ function draggablecards() {
             stars:"★★★★",
             effect:"IMG/Backgrounds/glitter swirl.gif",
             percent:"2",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Twister_17.jpg",
+            name:"The Twister",
+            number:"17",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/slowstarsblue.gif",
+            percent:"2",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Emperor_18.jpg",
+            name:"The Emperor",
+            number:"18",
+            rarity:4,
+            stars:"★★★★",
+            effect:"IMG/Backgrounds/glitter swirl.gif",
+            percent:"35",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Castard_19.jpg",
+            name:"The Castard",
+            number:"19",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+        
+        {
+            image:"IMG/Gacha10/The_Duckbell_20.jpg",
+            name:"The Duckbell",
+            number:"20",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
         }
-    ];
+    ]; 
 
       
                         var gen = Math.floor(Math.random() * 100);
@@ -480,6 +548,8 @@ function draggablecards() {
         CardRarityValue[i].textContent = selectedElements[i].rarity;
         preBuffer[i].appendChild(CardRarityValue[i]);
         CardRarityValue[i].classList.add('rarityvalue');
+
+ 
     
                 }
    
@@ -520,6 +590,46 @@ var cardR = CardRarityValue[imn].textContent;
 
         document.getElementById("card").appendChild(newCard);
 
+
+
+        //zoom card in on double click
+        newCard.addEventListener("dblclick", (e) => {
+        newCard.classList.toggle("large");
+        });
+
+        //and now look for unique cards to count them
+ function wheremyfuckingcrads(){
+        //make array from all divs with that class
+        //first find all elements by class
+         var cardsonpage = document.querySelectorAll(".gacha10card .infotext");
+         //then conver the node into an array
+         var totalcards = Array.prototype.slice.call(cardsonpage);
+
+        // Initialize epmty array to store unique values
+           
+            let counting1 = [];
+
+            // Iterate over the array to get unique values
+            for (let i = 0; i < totalcards.length; i++) {
+                
+                // Check if the element exist in the new array
+                if (!counting1.includes(totalcards[i].textContent)) {
+                
+                    // If not then push the element to new array
+                    counting1.push(totalcards[i].textContent);
+                }
+            }
+
+            // Display updated array
+            console.log("Updated Array: ", counting1);
+            //how many??
+            console.log("Total Array: ", totalcards);
+            
+            console.log("Unique collected gacha 10 cards = ", counting1.length, "and total cards is: ", totalcards.length);
+
+            collectiongacha10.innerHTML = counting1.length;
+}
+wheremyfuckingcrads()
         
     };
 //
@@ -569,6 +679,36 @@ var cardR = CardRarityValue[imn].textContent;
             stars:"★★★",
             effect:"IMG/Backgrounds/holo2.gif",
             percent:"10",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Duckbelissimo_5.jpg",
+            name:"Duckbelissimo",
+            number:"5",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Cyberhog_6.jpg",
+            name:"The Cyberhog",
+            number:"6",
+            rarity:4,
+            stars:"★★★★",
+            effect:"IMG/Backgrounds/rainbowstars.gif",
+            percent:"5",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Pastelron_7.jpg",
+            name:"The Pastelron",
+            number:"7",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
+            percent:"35",
         },
         
     
@@ -703,6 +843,48 @@ var cardR = CardRarityValue[imn].textContent;
 
 
         document.getElementById("card2").appendChild(newCard);
+
+
+        //zoom card in on double click
+        newCard.addEventListener("dblclick", (e) => {
+        newCard.classList.toggle("large");
+        });
+
+        //and now look for unique cards to count them
+ function wheremyfuckingcrads(){
+        //make array from all divs with that class
+        //first find all elements by class
+         var cardsonpage = document.querySelectorAll(".gacha50card .infotext");
+         //then conver the node into an array
+         var totalcards = Array.prototype.slice.call(cardsonpage);
+
+        // Initialize epmty array to store unique values
+           
+            let counting1 = [];
+
+            // Iterate over the array to get unique values
+            for (let i = 0; i < totalcards.length; i++) {
+                
+                // Check if the element exist in the new array
+                if (!counting1.includes(totalcards[i].textContent)) {
+                
+                    // If not then push the element to new array
+                    counting1.push(totalcards[i].textContent);
+                }
+            }
+
+            // Display updated array
+            console.log("Updated Array: ", counting1);
+            //how many??
+            console.log("Total Array: ", totalcards);
+            
+            console.log("Unique collected gacha 50 cards = ", counting1.length, "and total cards is: ", totalcards.length);
+
+            collectiongacha50.innerHTML = counting1.length;
+}
+wheremyfuckingcrads()
+      
+
 
         
     };
@@ -850,6 +1032,46 @@ var cardR = CardRarityValue[imn].textContent;
 
         document.getElementById("card3").appendChild(newCard);
 
+         //zoom card in on double click
+        newCard.addEventListener("dblclick", (e) => {
+        newCard.classList.toggle("large");
+        });
+
+
+         //and now look for unique cards to count them
+ function wheremyfuckingcrads(){
+        //make array from all divs with that class
+        //first find all elements by class
+         var cardsonpage = document.querySelectorAll(".gacha100card .infotext");
+         //then conver the node into an array
+         var totalcards = Array.prototype.slice.call(cardsonpage);
+
+        // Initialize epmty array to store unique values
+           
+            let counting1 = [];
+
+            // Iterate over the array to get unique values
+            for (let i = 0; i < totalcards.length; i++) {
+                
+                // Check if the element exist in the new array
+                if (!counting1.includes(totalcards[i].textContent)) {
+                
+                    // If not then push the element to new array
+                    counting1.push(totalcards[i].textContent);
+                }
+            }
+
+            // Display updated array
+            console.log("Updated Array: ", counting1);
+            //how many??
+            console.log("Total Array: ", totalcards);
+            
+            console.log("Unique collected gacha 100 cards = ", counting1.length, "and total cards is: ", totalcards.length);
+
+            collectiongacha100.innerHTML = counting1.length;
+}
+wheremyfuckingcrads()
+
         
     };
 //
@@ -996,6 +1218,45 @@ var cardR = CardRarityValue[imn].textContent;
 
         document.getElementById("card4").appendChild(newCard);
 
+         //zoom card in on double click
+        newCard.addEventListener("dblclick", (e) => {
+        newCard.classList.toggle("large");
+        });
+
+         //and now look for unique cards to count them
+ function wheremyfuckingcrads(){
+        //make array from all divs with that class
+        //first find all elements by class
+         var cardsonpage = document.querySelectorAll(".gacha200card .infotext");
+         //then conver the node into an array
+         var totalcards = Array.prototype.slice.call(cardsonpage);
+
+        // Initialize epmty array to store unique values
+           
+            let counting1 = [];
+
+            // Iterate over the array to get unique values
+            for (let i = 0; i < totalcards.length; i++) {
+                
+                // Check if the element exist in the new array
+                if (!counting1.includes(totalcards[i].textContent)) {
+                
+                    // If not then push the element to new array
+                    counting1.push(totalcards[i].textContent);
+                }
+            }
+
+            // Display updated array
+            console.log("Updated Array: ", counting1);
+            //how many??
+            console.log("Total Array: ", totalcards);
+            
+            console.log("Unique collected gacha 200 cards = ", counting1.length, "and total cards is: ", totalcards.length);
+
+            collectiongacha200.innerHTML = counting1.length;
+}
+wheremyfuckingcrads()
+
         
     };
 //
@@ -1016,19 +1277,24 @@ var cardR = CardRarityValue[imn].textContent;
             MyTotalCoins.innerHTML = coins;
         });
 
+
+        var cards1total = 0;
     // 10 coin Gacha
        Gachabtn10.addEventListener("click", function(){
         if (coins>=10)
        {   
            //paying for the spin
-           console.log("you have bouhgt the 10 coin gacha spin!");
+           console.log("you have bought the 10 coin gacha spin!");
            coins = coins - 10;
            MyTotalCoins.innerHTML = coins;
-           messages.innerHTML = "you have bouhgt the 10 coin gacha spin!";
+           messages.innerHTML = "you have bought the 10 coin gacha spin!";
            //this is where we need to put the random card picker code
             
             RandomCard1();
             draggablecards();
+
+            cards1total++;
+            totalgacha10.innerHTML = cards1total;
             
             
 
@@ -1040,18 +1306,24 @@ var cardR = CardRarityValue[imn].textContent;
        }
     )
 
+
+        var cards2total = 0;
     //50 coin Gacha
        Gachabtn50.addEventListener("click", function(){
         if (coins>=50)
        {   
            //paying for the spin
-           console.log("you have bouhgt the 50 coin gacha spin!");
+           console.log("you have bought the 50 coin gacha spin!");
            coins = coins - 50;
            MyTotalCoins.innerHTML = coins;
-           messages.innerHTML = "you have bouhgt the 50 coin gacha spin!";
+           messages.innerHTML = "you have bought the 50 coin gacha spin!";
            //this is where we need to put the random card picker code
            RandomCard2();
            draggablecards();
+
+           cards2total++;
+           totalgacha50.innerHTML = cards2total;
+       
        }
        else{
            console.log("Not enough coin! You only have:", coins);
@@ -1060,18 +1332,24 @@ var cardR = CardRarityValue[imn].textContent;
        }
     )
 
+
+        var cards3total = 0;
      //100 coin Gacha
        Gachabtn100.addEventListener("click", function(){
         if (coins>=100)
        {   
            //paying for the spin
-           console.log("you have bouhgt the 100 coin gacha spin!");
+           console.log("you have bought the 100 coin gacha spin!");
            coins = coins - 100;
            MyTotalCoins.innerHTML = coins;
-           messages.innerHTML = "you have bouhgt the 100 coin gacha spin!";
+           messages.innerHTML = "you have bought the 100 coin gacha spin!";
            //this is where we need to put the random card picker code
            RandomCard3();
            draggablecards();
+
+           cards3total++;
+           totalgacha100.innerHTML = cards3total;
+      
 
        }
        else{
@@ -1081,18 +1359,23 @@ var cardR = CardRarityValue[imn].textContent;
        }
     )
 
+
+        var cards4total = 0;    
     //200 coin Gacha
        Gachabtn200.addEventListener("click", function(){
         if (coins>=200)
        {   
            //paying for the spin
-           console.log("you have bouhgt the 200 coin gacha spin!");
+           console.log("you have bought the 200 coin gacha spin!");
            coins = coins - 200;
            MyTotalCoins.innerHTML = coins;
-           messages.innerHTML = "you have bouhgt the 200 coin gacha spin!";
+           messages.innerHTML = "you have bought the 200 coin gacha spin!";
            //this is where we need to put the random card picker code
            RandomCard4();
            draggablecards();
+
+           cards4total++;
+           totalgacha200.innerHTML = cards4total;
 
        }
        else{

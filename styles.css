@@ -60,6 +60,10 @@ button{
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 
+
+  transform: scale(1);
+  transition: transform 0.2s;
+
 }
 
 
@@ -76,6 +80,9 @@ button{
     bottom: 0.1vh;
     border-radius: 1vh;
     mix-blend-mode: overlay;
+    animation-name: fadinginandout;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
 }
 
 .gacha50card{
@@ -96,6 +103,9 @@ button{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  transform: scale(1);
+  transition: transform 0.2s;
 }
 
 .gacha100card{
@@ -119,6 +129,9 @@ button{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  transform: scale(1);
+  transition: transform 0.2s;
 }
 
 .gacha100cardeffect{
@@ -158,6 +171,9 @@ button{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+
+  transform: scale(1);
+  transition: transform 0.2s;
 }
 
 .gacha10card img , .gacha50card img , .gacha100card img, .gacha200card img, .cardDecor{
@@ -174,14 +190,37 @@ button{
     opacity: 60%;
     mix-blend-mode:color-dodge;
     width: 10%;
-    height: 50%;
+    height: 49.5%;
     position: absolute;
     display: block;
-    bottom: 29%;
+    bottom: 29.2%;
     left: 10%;
 }
 
+.gacha10card .cardDecor{
+    animation-name: fadinginandout2;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
 
+@keyframes fadinginandout2 {
+  0%   {opacity: 60%;}
+  50%  {opacity: 20%}
+  100% {opacity: 60%}
+}
+
+.gacha50card .cardDecor{
+    opacity: 45%;
+    animation-name: fadinginandout;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fadinginandout {
+  0%   {opacity: 45%;}
+  50%  {opacity: 0%}
+  100% {opacity: 45%}
+}
 
 
 .infotext{
@@ -197,7 +236,7 @@ button{
     background-color: rgb(255, 231, 200);
     display: inline-block;
     width: 90vw;
-    height: 60vh;
+    height: 80vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -205,7 +244,7 @@ button{
     color: brown;
     padding: 1vh;
     border-radius: 20px;
-    font-size: 1.8vh;
+   
 
 }
 
@@ -213,7 +252,7 @@ button{
     background-color: rgb(75, 97, 147);
     display: inline-block;
     width: 90vw;
-    height: 60vh;
+    height: 80vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -221,7 +260,7 @@ button{
     color: rgb(160, 199, 255);
     padding: 1vh;
     border-radius: 20px;
-    font-size: 1.8vh;
+    
     border-color: #30305a;
     border-width: 1vh;
     border-style: groove;
@@ -232,7 +271,7 @@ button{
     background-image: repeating-linear-gradient(45deg, rgb(217, 178, 78),  rgb(255, 128, 93), rgb(184, 255, 136), rgb(170, 170, 255),  rgb(217, 178, 78));
     display: inline-block;
     width: 90vw;
-    height: 60vh;
+    height: 80vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -240,7 +279,7 @@ button{
     color: rgb(35, 35, 14);
     padding: 1vh;
     border-radius: 20px;
-    font-size: 1.8vh;
+   
     border-color:rgb(255, 207, 49);
     border-width: 1vh;
     border-style:double
@@ -251,7 +290,7 @@ button{
     background-image: url(IMG/Backgrounds/velvet1.jpg);
     display: inline-block;
     width: 90vw;
-    height: 60vh;
+    height: 80vh;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -260,7 +299,7 @@ button{
     text-shadow: 0 0 10px gold;
     padding: 1vh;
     border-radius: 20px;
-    font-size: 1.8vh;
+    
     border-color:rgb(224, 61, 91);
     border-width: 0.5vh;
     border-style:dotted;
@@ -293,4 +332,10 @@ button{
     border-width: 0.5vh;
     border-style:double;
     top:0;
+}
+
+
+.large{
+transform: scale(5); 
+transition: transform 0.5s;
 }
