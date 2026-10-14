@@ -59,9 +59,9 @@ button{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-  font-size: 1.7vh;
+  
 
-
+    font-size: medium;
   transform: scale(1);
   transition: transform 0.2s;
 
@@ -104,8 +104,8 @@ button{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-  font-size: 1.7vh;
 
+font-size: medium;
   transform: scale(1);
   transition: transform 0.2s;
 }
@@ -126,9 +126,9 @@ button{
     border-style:dashed;
     color:  rgb(255, 188, 220);
     text-shadow:  0px 0px 1px rgb(234, 247, 91), 0px 0px 2px rgb(247, 91, 166), 0px 0px 8px black;
-    font-size: 1.7vh;
+   
 
-
+font-size: medium;
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
@@ -169,8 +169,8 @@ button{
     border-style:solid;
     color:  rgb(255, 188, 220);
     text-shadow:  0px 0px 1px rgb(234, 247, 91), 0px 0px 2px rgb(247, 91, 166), 0px 0px 8px black;
-    font-size: 1.7vh;
-
+    
+font-size: medium;
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
@@ -179,25 +179,30 @@ button{
   transition: transform 0.2s;
 }
 
-.gacha10card img , .gacha50card img , .gacha100card img, .gacha200card img, .cardDecor{
+.gacha10card img , .gacha50card img , .gacha100card img, .gacha200card img{
     width: 80%;
-    margin-top: 10%;
+    margin-top: 5%;
     border-radius: 10px;
     pointer-events: none;
 }
 
 .cardDecor{
-    margin-top: 10%;
+     width: 80%;
+   
+    border-radius: 10px;
+    pointer-events: none;
+    
     border-radius: 10px;
     pointer-events: none;
     opacity: 60%;
     mix-blend-mode:color-dodge;
-    width: 10%;
     height: 49.5%;
     position: absolute;
     display: block;
-    bottom: 29.2%;
+    bottom: 33.5%;
     left: 10%;
+    z-index: 4;
+  
 }
 
 .gacha10card .cardDecor{
@@ -330,7 +335,7 @@ button{
     text-shadow: 0 0 3px rgb(255, 215, 142), 0 0 5px rgb(255, 242, 171), 0 0 10px rgb(240, 237, 240);
     padding: 1vh;
     border-radius: 20px;
-    font-size: 1,5vh;
+    font-size: 1.5vh;
     border-color:rgb(255, 214, 68);
     border-width: 0.5vh;
     border-style:double;
@@ -339,6 +344,26 @@ button{
 
 
 .large{
-transform: scale(5); 
+transform: scale(5) rotate(0.000001deg);
 transition: transform 0.5s;
+}
+
+.selected{
+    transform: scale(1.1);
+}
+
+.waggling{
+    animation-name: wigglingthecard;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes wigglingthecard {
+  0%   {rotate: 10deg}
+  50%  {rotate: -10deg}
+  100% {rotate: 10deg}
+}
+
+.notselected{
+    transform: scale(1);
 }

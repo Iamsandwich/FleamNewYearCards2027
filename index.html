@@ -27,15 +27,23 @@
      
         <h1>Press button to get coins!</h1>
         <div id="buttonwrapper">
+
+            <div><audio id="cardsound1" src="Sounds/Card sound1.wav"></audio></div>
+            <div><audio id="cardsound2" src="Sounds/Card sound2.wav"></audio></div>
+            <div><audio id="coinsound1" src="Sounds/coin1.wav"></audio></div>
+            
         
 
             <button id="button1" onclick="playRandomSound()">Get Some Coins</button>
             <div>Your favourite table and cards can be moved! Double-click to zoom in on the card, double click to zoom back out again.</div>
             <br>
+
+            <button id="muteme">Mute the coins</button>
             
-            <br> <button id="auto">Spend 200 coins for Auto-click!</button>
-                 <button id="auto2">Spend 1000 coins for Auto-click x2!</button>
-                 <button id="auto3">Spend 2000 coins for Auto-click x4!</button>
+            <br> <button id="autobase">Spend 50 coins for begginer's Auto-click!</button>
+                 <button id="auto">Spend 200 coins for starter Auto-click!</button>
+                 <button id="auto2">Spend 1000 coins for advanced Auto-click!</button>
+                 <button id="auto3">Spend 2000 coins for mega Auto-click!</button>
                  <button id="Cheat1">Debug cheat button - get 200</button>
             <br>
           
@@ -143,7 +151,8 @@ function draggablecards() {
     // This function initializes the drag of an element where an
     // event ("mousedown") has occurred:
     function startDrag(evt) {
-
+        
+        
         // The element's position is based on its top left corner,
         // but the mouse coordinates are inside of it, so we need
         // to calculate the positioning difference:
@@ -157,14 +166,21 @@ function draggablecards() {
         function moveAlong(evt) {
             that.style.left = (evt.clientX - diffX) + 'px';
             that.style.top = (evt.clientY - diffY) + 'px';
+             
         }
-
+                var cardpickup = document.getElementById("cardsound1");
+                cardpickup.play();
+             
         // stopDrag removes event listeners from the element,
         // thus stopping the drag:
         function stopDrag() {
             document.removeEventListener('mousemove', moveAlong);
             document.removeEventListener('mouseup', stopDrag);
+            var cardletdown = document.getElementById("cardsound2")
+            cardletdown.play();
+            
         }
+        
 
         document.addEventListener('mouseup', stopDrag);
         document.addEventListener('mousemove', moveAlong);
@@ -243,16 +259,18 @@ function draggablecards() {
         let Cheat200 = document.getElementById("Cheat1");
 
         //autoclicker timers
+        var myTimerBegginer;
         var myTimer;
         var myTimer2;
         var myTimer3;
 
         //button for autoclicker 1
+        var autoclickbegginer = document.getElementById("autobase")
         var autoclick1 = document.getElementById("auto");
         var autoclick2 = document.getElementById("auto2");
         var autoclick3 = document.getElementById("auto3");
 
-        //count cards got
+        
         
 
 
@@ -595,7 +613,42 @@ var cardR = CardRarityValue[imn].textContent;
         //zoom card in on double click
         newCard.addEventListener("dblclick", (e) => {
         newCard.classList.toggle("large");
+        newCard.classList.toggle("selected");
+        newCard.classList.remove("waggling");
+        
         });
+
+        //slight zoom on card when hover
+                newCard.addEventListener("mouseenter", (e) => {
+                newCard.classList.toggle("selected");
+        
+                console.log('we looking')
+        
+        });
+
+        //stop the thing when not on card anymooore
+                newCard.addEventListener("mouseleave", (e) => {
+                newCard.classList.toggle("selected");
+                newCard.classList.remove("waggling"); 
+                console.log('we not looking')
+        
+        });
+
+        
+
+        //gently waggle card when picked up
+                newCard.addEventListener("mousedown", (e) => {
+        newCard.classList.add("waggling");     
+        console.log('we jiggling');
+        });
+
+        //dont waggle on mouseup
+                newCard.addEventListener("mouseup", (e) => {
+                newCard.classList.remove("waggling"); 
+                console.log('we not jigglin')
+        
+        });
+
 
         //and now look for unique cards to count them
  function wheremyfuckingcrads(){
@@ -848,6 +901,40 @@ var cardR = CardRarityValue[imn].textContent;
         //zoom card in on double click
         newCard.addEventListener("dblclick", (e) => {
         newCard.classList.toggle("large");
+        newCard.classList.toggle("selected");
+        newCard.classList.remove("waggling");
+        });
+
+                //slight zoom on card when hover
+                newCard.addEventListener("mouseenter", (e) => {
+                newCard.classList.toggle("selected");
+        
+                console.log('we looking')
+        
+        });
+
+        //stop the thing when not on card anymooore
+                newCard.addEventListener("mouseleave", (e) => {
+                newCard.classList.toggle("selected");
+                newCard.classList.remove("waggling"); 
+                console.log('we not looking')
+        
+        });
+
+          //dont waggle on mouseup
+                newCard.addEventListener("mouseup", (e) => {
+                newCard.classList.remove("waggling"); 
+                console.log('we not jigglin')
+        
+        });
+
+
+        
+
+        //gently waggle card when picked up
+                newCard.addEventListener("mousedown", (e) => {
+        newCard.classList.add("waggling");     
+        console.log('we jiggling');
         });
 
         //and now look for unique cards to count them
@@ -1035,8 +1122,43 @@ var cardR = CardRarityValue[imn].textContent;
          //zoom card in on double click
         newCard.addEventListener("dblclick", (e) => {
         newCard.classList.toggle("large");
+        newCard.classList.toggle("selected");
+        newCard.classList.remove("waggling");
         });
 
+                //slight zoom on card when hover
+                newCard.addEventListener("mouseenter", (e) => {
+                newCard.classList.toggle("selected");
+        
+                console.log('we looking')
+        
+        });
+
+        //stop the thing when not on card anymooore
+                newCard.addEventListener("mouseleave", (e) => {
+                newCard.classList.toggle("selected");
+                newCard.classList.remove("waggling"); 
+                console.log('we not looking')
+        
+        });
+
+          //dont waggle on mouseup
+                newCard.addEventListener("mouseup", (e) => {
+                newCard.classList.remove("waggling"); 
+                console.log('we not jigglin')
+        
+        });
+
+
+     
+
+        //gently waggle card when picked up
+                newCard.addEventListener("mousedown", (e) => {
+        newCard.classList.add("waggling");     
+        console.log('we jiggling');
+        });
+
+         
 
          //and now look for unique cards to count them
  function wheremyfuckingcrads(){
@@ -1221,7 +1343,41 @@ var cardR = CardRarityValue[imn].textContent;
          //zoom card in on double click
         newCard.addEventListener("dblclick", (e) => {
         newCard.classList.toggle("large");
+        newCard.classList.toggle("selected");
+        newCard.classList.remove("waggling");
         });
+
+                //slight zoom on card when hover
+                newCard.addEventListener("mouseenter", (e) => {
+                newCard.classList.toggle("selected");
+        
+                console.log('we looking')
+        
+        });
+
+        //stop the thing when not on card anymooore
+                newCard.addEventListener("mouseleave", (e) => {
+                newCard.classList.toggle("selected");
+                newCard.classList.remove("waggling"); 
+                console.log('we not looking')
+        
+        });
+
+        
+
+        //gently waggle card when picked up
+                newCard.addEventListener("mousedown", (e) => {
+        newCard.classList.add("waggling");     
+        console.log('we jiggling');
+        });
+
+          //dont waggle on mouseup
+                newCard.addEventListener("mouseup", (e) => {
+                newCard.classList.remove("waggling"); 
+                console.log('we not jigglin')
+        
+        });
+
 
          //and now look for unique cards to count them
  function wheremyfuckingcrads(){
@@ -1275,6 +1431,7 @@ wheremyfuckingcrads()
             coins++;
             disp.innerHTML = count;
             MyTotalCoins.innerHTML = coins;
+    
         });
 
 
@@ -1387,6 +1544,27 @@ wheremyfuckingcrads()
 
 
 
+    // auto clicker BEGGINER
+        let btnbegginer = document.getElementById("autobase");
+        let autobaseon = 0;
+        let clickedbase = 0;
+        btnbegginer.addEventListener("click", function () {
+          if (autobaseon==0, clickedbase==0, coins>=50){
+            //paytime
+            coins = coins - 50;
+  clickedbase = 1;
+  autobaseon = 1;
+  console.log("clicked= ", clickedbase, "auto basic on= ", autobaseon);
+  messages.innerHTML = "Auto-Clicker Basic enabled!";
+  autoclickbegginer.disabled = true;
+          }
+          else if(coins<50){
+            console.log("Not enough coin! You only have:", coins, "you need 50");
+            messages.innerHTML = "Not enough coin for the basic auto clicker!";
+        }
+
+});
+
     // auto clicker 
         let btn4 = document.getElementById("auto");
         let autoon = 0;
@@ -1455,6 +1633,23 @@ btn5.addEventListener("click", function () {
           }
 });
 
+
+       //begginer clicker
+       
+        document.getElementById("autobase").onclick = AutoBasic;
+        function AutoBasic(){
+        if (autobaseon==1) {
+        myTimerBegginer = setInterval(
+        function Counting() {
+        document.getElementById('button1').click();
+        }, 2000)
+        }
+        else{
+        clearInterval(myTimerBegginer);
+        console.log("interval clearing")
+        }
+        };
+
         //auto clicker
         document.getElementById("auto").onclick = Auto;
         function Auto(){
@@ -1505,15 +1700,45 @@ btn5.addEventListener("click", function () {
 <script type="text/javascript">
 function playRandomSound(){ 
     var sounds = [
-       "Sounds/Click1.wav",
+       "Sounds/coin1.wav",
        
       ];
      
     var soundFile = sounds[Math.floor(Math.random()*sounds.length)];
-    document.getElementById("player").src= soundFile;
+
+    document.getElementById("coinsound1").src = soundFile;
+     setTimeout (function fuckthisdelay(){
+    var player = document.getElementById("coinsound1");
     player.play();
-    console.log('playing sound!');
+    }, 80)
+
+
     };
+
+
+    var mutebutton = document.getElementById("muteme");
+    var muted = 0; 
+    var player = document.getElementById("coinsound1");
+
+    
+
+    mutebutton.addEventListener("click", mutebuttonactivation);
+    function mutebuttonactivation(){
+    if (muted == 0){
+        player.volume = 0;
+        muted = 1;
+        console.log('coins muted!');
+        mutebutton.innerHTML = "Unmute the Coins";
+
+    }
+
+    else if (muted == 1){
+        player.volume = 1;
+        muted = 0;
+        console.log('coins UNmuted!')
+        mutebutton.innerHTML = "Mute the Coins";
+    }
+};
 
 
 
