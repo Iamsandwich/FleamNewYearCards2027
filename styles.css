@@ -198,11 +198,15 @@ font-size: 1.8vh;
     opacity: 60%;
     mix-blend-mode:color-dodge;
     height: 49.5%;
-    position: absolute;
+
     display: block;
-    bottom: 33.5%;
+  
     left: 10%;
     z-index: 4;
+    
+
+   bottom: 32%;
+   position: fixed;
   
 }
 
@@ -368,3 +372,108 @@ transition: transform 0.5s;
 .notselected{
     transform: scale(1);
 }
+
+#totalG10cards, #totalG50cards, #totalG100cards, #totalG200cards{
+    display: inline;
+    position: relative;
+}
+
+#congratsgacha10, #congratsgacha50, #congratsgacha100, #congratsgacha200{
+    font-size: 150%;
+    text-shadow: 0 0 2px white, 0 0 10px rgb(153, 205, 63);
+}
+
+#autobase{
+    background-color: #dcd4fa;
+    color: rgb(25, 23, 50);
+    border-color: rgb(88, 63, 117);
+    border-style: double;
+}
+
+#auto{
+    background-image: repeating-linear-gradient(45deg, gold, rgb(255, 251, 231), yellow, gold);
+    color: rgb(10, 8, 5);
+    border-color: rgb(95, 72, 31);
+    border-style: double;
+}
+
+#auto2{
+    background-image: repeating-linear-gradient(45deg, rgb(169, 169, 255), rgb(107, 89, 161), rgb(130, 94, 177), rgb(169, 169, 255));
+    color: rgb(160, 215, 238);
+    border-color: rgb(242, 242, 242);
+    border-style: double;
+}
+
+#auto3{
+    background-color: #921a70;
+    color: rgb(239, 237, 235);
+    border-color: rgb(85, 20, 70);
+    border-style: double;
+}
+
+#autobase:disabled, #auto:disabled, #auto2:disabled, #auto3:disabled{
+
+ opacity: 20%;
+}
+
+.mutemeenabled{
+    color: #000000;
+    border-color: transparent;
+    margin-bottom: 2vh;
+    background-color: #882a44;
+}
+
+.mutemedisabled{
+    color: #000000;
+    background-color: #bf335b;
+    border-color: transparent;
+    margin-bottom: 2vh;
+}
+
+
+
+#Gamble1{
+    background-color: #b3bdff;
+    color: rgb(1, 0, 0);
+    text-shadow: 0 0 2px #fff3fd, 0 0 10px blueviolet;
+    border-color: rgb(85, 20, 70);
+    border-style: dashed;
+    border-width: 5px;
+    display: block;
+}
+
+
+
+#Gamble1:active{
+    background-color: #4e5aab;
+}
+#coinflip1, #coinflip2, #coinflip3, #coinflip4{
+    border-radius: 10vh;
+    background-color: goldenrod;
+    border-width: 0.5vh;
+    border-style: solid;
+    height: 5vh;
+    width: 5vh;
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 1vh;
+    rotate: 90deg;
+    font-size:3.2vh;
+    
+}
+
+#coinflip1{
+    background-image: repeating-linear-gradient(45deg, rgb(232, 232, 255), rgb(127, 167, 253), rgb(103, 121, 210),  rgb(232, 232, 255));
+    border-color: #6262c3;
+    
+
+}
+
+.gamble1container, .gamble2container, .gamble3container, .gamble4container{
+    text-align: center;
+    display: inline-block;
+    margin-top: 1vh;
+}
+
+

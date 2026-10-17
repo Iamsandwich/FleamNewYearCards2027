@@ -31,6 +31,7 @@
             <div><audio id="cardsound1" src="Sounds/Card sound1.wav"></audio></div>
             <div><audio id="cardsound2" src="Sounds/Card sound2.wav"></audio></div>
             <div><audio id="coinsound1" src="Sounds/coin1.wav"></audio></div>
+            <div><audio id="tearcard" src="Sounds/tearingcard1.mp3"></audio></div>
             
         
 
@@ -38,13 +39,21 @@
             <div>Your favourite table and cards can be moved! Double-click to zoom in on the card, double click to zoom back out again.</div>
             <br>
 
-            <button id="muteme">Mute the coins</button>
+            <button id="muteme" class="mutemedisabled">Mute the coins</button>
             
             <br> <button id="autobase">Spend 50 coins for begginer's Auto-click!</button>
                  <button id="auto">Spend 200 coins for starter Auto-click!</button>
                  <button id="auto2">Spend 1000 coins for advanced Auto-click!</button>
                  <button id="auto3">Spend 2000 coins for mega Auto-click!</button>
                  <button id="Cheat1">Debug cheat button - get 200</button>
+            <br>
+
+            <br>
+            <div>Gambling Corner!</div>
+            <div class="gamble1container"><div id="coinflip1">:|</div><button id="Gamble1">Cost:10 Prize:15</button></div>
+            <div class="gamble2container"><div id="coinflip2">:|</div><button id="Gamble2">Cost:50 Prize:100</button></div>
+            <div class="gamble3container"><div id="coinflip3">:|</div><button id="Gamble3"><div class="coinflip"></div>Cost:100 Prize:200</button></div>
+            <div class="gamble4container"><div id="coinflip4">:|</div><button id="Gamble4"><div class="coinflip"></div>Cost:200 Prize:500</button></div>
             <br>
           
         </div>
@@ -86,7 +95,9 @@
                     
                     <div id="cardtable1">Card table 1
                         <div>Your total Simple cards: <span id="cardcounttotalG10">0</span> </div>
-                        <div>Card colection: <span id="cardcollectionG10">0</span> out of 20</div>
+                        <div>Card colection: <span id="cardcollectionG10">0</span> out of <div id="totalG10cards">?</div></div>
+                        <div id="congratsgacha10"></div>
+
                         <div id="Table1">
                             <div id="card" class="draggable">
                                 
@@ -97,7 +108,10 @@
                     
                     <div id="cardtable2">Card table 2
                         <div>Your total Super cards: <span id="cardcounttotalG50">0</span> </div>
-                        <div>Card colection: <span id="cardcollectionG50">0</span> out of 7</div>
+                        <div>Card colection: <span id="cardcollectionG50">0</span> out of <div id="totalG50cards">?</div></div>
+                        <div id="congratsgacha50"></div>
+
+                       
                         <div id="Table2">
                             <div id="card2" class="draggable">
                                 
@@ -107,7 +121,8 @@
 
                      <div id="cardtable3">Card table 3
                         <div>Your total VIP cards: <span id="cardcounttotalG100">0</span> </div>
-                        <div>Card colection: <span id="cardcollectionG100">0</span> out of xx</div>
+                        <div>Card colection: <span id="cardcollectionG100">0</span> out of <div id="totalG100cards">?</div></div>
+                        <div id="congratsgacha100"></div>
 
                         <div id="Table3">
                             <div id="card3" class="draggable">
@@ -118,7 +133,8 @@
 
                     <div id="cardtable4">Card table 4
                         <div>Your total Mega cards: <span id="cardcounttotalG200">0</span> </div>
-                        <div>Card colection: <span id="cardcollectionG200">0</span> out of xx</div>
+                        <div>Card colection: <span id="cardcollectionG200">0</span> out of <div id="totalG200cards">?</div></div>
+                        <div id="congratsgacha200"></div>
 
                         <div id="Table4">
                             <div id="card4" class="draggable">
@@ -567,6 +583,9 @@ function draggablecards() {
         preBuffer[i].appendChild(CardRarityValue[i]);
         CardRarityValue[i].classList.add('rarityvalue');
 
+
+       
+
  
     
                 }
@@ -602,8 +621,10 @@ var cardR = CardRarityValue[imn].textContent;
 
         console.log("rarity of card is " + cardR);
         console.log("imn= "+(imn+1));
-        
 
+        //open the card pack sound
+        var opencard = document.getElementById("tearcard");
+        opencard.play();
 
 
         document.getElementById("card").appendChild(newCard);
@@ -681,8 +702,20 @@ var cardR = CardRarityValue[imn].textContent;
             console.log("Unique collected gacha 10 cards = ", counting1.length, "and total cards is: ", totalcards.length);
 
             collectiongacha10.innerHTML = counting1.length;
+
+             //count total cards in the pack
+            
+            document.getElementById('totalG10cards').innerHTML = cards1.length;
+            if (counting1.length == cards1.length){
+                document.getElementById('congratsgacha10').innerHTML = "You got all the simple cards!!";
+
+            }
+            
 }
 wheremyfuckingcrads()
+
+
+
         
     };
 //
@@ -763,7 +796,136 @@ wheremyfuckingcrads()
             effect:"IMG/Backgrounds/warmbigsparkles.gif",
             percent:"35",
         },
+
+        {
+            image:"IMG/Gacha50/The_Tedhug_8.jpg",
+            name:"The Tedhug",
+            number:"8",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Dogsnack_9.jpg",
+            name:"The Dogsnack",
+            number:"9",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Quackaim_10.jpg",
+            name:"The Quackaim",
+            number:"10",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Grakitty_11.jpg",
+            name:"The Grakitty",
+            number:"11",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/holo2.gif",
+            percent:"10",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Notrisha_12.jpg",
+            name:"The Notrisha",
+            number:"12",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Booter_13.jpg",
+            name:"The Booter",
+            number:"13",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Ghoosty_14.jpg",
+            name:"The Ghoosty",
+            number:"14",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Swany_15.jpg",
+            name:"The Swany",
+            number:"15",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Princesse_16.jpg",
+            name:"The Princesse",
+            number:"16",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Metally_17.jpg",
+            name:"The Metally",
+            number:"17",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/holo2.gif",
+            percent:"10",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Harey_18.jpg",
+            name:"The Harey",
+            number:"18",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/holo2.gif",
+            percent:"10",
+        },
+
+        {
+            image:"IMG/Gacha50/The_Friend_19.jpg",
+            name:"The Friend",
+            number:"19",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/warmbigsparkles.gif",
+            percent:"35",
+        },
         
+        {
+            image:"IMG/Gacha50/The_Flobnog_20.jpg",
+            name:"The Flobnog",
+            number:"20",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
     
 
     ];
@@ -812,9 +974,12 @@ wheremyfuckingcrads()
     var CardRarity = [];
     var imageInfo = [];
     var imageCard = [];
+    var imagedivstorage = [];
     var preBuffer = [];
     for (var i = 0, j = selectedElements.length; i < j; i++) {
         preBuffer[i] =  document.createElement('div');
+
+        imagedivstorage[i] =  document.createElement('div');
         
         imageCard[i] = document.createElement('img');
         imageCard[i].src = selectedElements[i].image;
@@ -832,7 +997,15 @@ wheremyfuckingcrads()
     
 
         preBuffer[i].textContent = selectedElements[i].name;
-        preBuffer[i].appendChild(imageCard[i]);
+        preBuffer[i].appendChild(imagedivstorage[i]);
+
+
+        imagedivstorage[i].appendChild(imageCard[i]);
+
+        imagedivstorage[i].appendChild(CardDecor[i]);
+        CardDecor[i].classList.add('cardDecor');
+
+
         preBuffer[i].appendChild(imageInfo[i]);
         imageInfo[i].classList.add('infotext');
 
@@ -844,8 +1017,7 @@ wheremyfuckingcrads()
         CardRarity[i].classList.add('rarity');
 
 
-        preBuffer[i].appendChild(CardDecor[i]);
-        CardDecor[i].classList.add('cardDecor');
+        
 
         CardRarityValue[i] =  document.createElement('div');
         CardRarityValue[i].textContent = selectedElements[i].rarity;
@@ -968,6 +1140,19 @@ var cardR = CardRarityValue[imn].textContent;
             console.log("Unique collected gacha 50 cards = ", counting1.length, "and total cards is: ", totalcards.length);
 
             collectiongacha50.innerHTML = counting1.length;
+
+
+            //count total cards in the pack
+            
+            document.getElementById('totalG50cards').innerHTML = cards2.length;
+
+            //count total cards in the pack
+            
+            document.getElementById('totalG50cards').innerHTML = cards2.length;
+            if (counting1.length == cards2.length){
+                document.getElementById('congratsgacha50').innerHTML = "You got all the Super cards!!";
+
+            }
 }
 wheremyfuckingcrads()
       
@@ -985,13 +1170,63 @@ wheremyfuckingcrads()
     //the crads
     var cards3 = [
         {
-            image:"IMG/Gacha100",
-            name:"The Mythtic",
+            image:"IMG/Gacha100/The_Mystic_1.jpg",
+            name:"The Mystic",
             number:"1",
             rarity:1,
             stars:"★",
             effect:"IMG/Backgrounds/nodecor.png",
             percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Frogsong_2.jpg",
+            name:"The Frogsong",
+            number:"2",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/purple sparks.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Goatgear_3.jpg",
+            name:"The Goatgear",
+            number:"3",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/sweet stars.gif",
+            percent:"10",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Hisser_4.jpg",
+            name:"The Frogsong",
+            number:"2",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/purple sparks.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Starries_5.jpg",
+            name:"The Starries",
+            number:"5",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Oldmoth_6.jpg",
+            name:"The Oldmoth",
+            number:"6",
+            rarity:4,
+            stars:"★★★★",
+            effect:"IMG/Backgrounds/rainbow swirl 1.gif",
+            percent:"5",
         },
 
     ];
@@ -1191,6 +1426,18 @@ var cardR = CardRarityValue[imn].textContent;
             console.log("Unique collected gacha 100 cards = ", counting1.length, "and total cards is: ", totalcards.length);
 
             collectiongacha100.innerHTML = counting1.length;
+
+            //count total cards in the pack
+            
+            document.getElementById('totalG100cards').innerHTML = cards3.length;
+
+            //count total cards in the pack
+            
+            document.getElementById('totalG100cards').innerHTML = cards3.length;
+            if (counting1.length == cards3.length){
+                document.getElementById('congratsgacha100').innerHTML = "You got all the VIP cards!!";
+
+            }
 }
 wheremyfuckingcrads()
 
@@ -1206,8 +1453,8 @@ wheremyfuckingcrads()
     var cards4 = [
 
         {
-            image:"IMG/Gacha200",
-            name:"The Danger Snek",
+            image:"IMG/Gacha200/The_Goldbug_1.jpg",
+            name:"The Goldbug",
             number:"1",
             rarity:1,
             stars:"★",
@@ -1410,12 +1657,70 @@ var cardR = CardRarityValue[imn].textContent;
             console.log("Unique collected gacha 200 cards = ", counting1.length, "and total cards is: ", totalcards.length);
 
             collectiongacha200.innerHTML = counting1.length;
+
+            //count total cards in the pack
+            
+            document.getElementById('totalG200cards').innerHTML = cards4.length;
+
+            //count total cards in the pack
+            
+            document.getElementById('totalG200cards').innerHTML = cards4.length;
+            if (counting1.length == cards4.length){
+                document.getElementById('congratsgacha200').innerHTML = "You got all the Mega cards!!";
+
+            }
 }
 wheremyfuckingcrads()
 
         
     };
-//
+//  
+
+    //Lets go gambliiinggg
+    //Gamble 10 coins to possibly win 15
+    var Gamble10 = document.getElementById("Gamble1");
+    var chance = 0;
+    var Coinface1 = document.getElementById("coinflip1");
+    
+    Gamble10.addEventListener("click", function () {
+         function getRandomInt() 
+                    {
+   //random number from the array
+        chance = Math.random();
+//end function, return value, final value basically
+  }
+  getRandomInt()
+        
+
+        if (coins>=10 && chance>=0.7){
+            
+            coins = coins+15;
+            count = count+15
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Won the coin toss for 10!");
+           messages.innerHTML = "Won 15 coins!";
+           console.log(chance);
+           Coinface1.innerHTML=":)";
+           console.log(Coinface1);
+
+        }
+        else if (coins>=10 && chance<=0.7){
+            coins = coins-10;
+            
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Sorry, lost the coin toss for 10!");
+           messages.innerHTML = "Sorry, lost the coin toss :(";
+           console.log(chance);
+           Coinface1.innerHTML=":("
+           console.log(Coinface1);
+        }
+        else if (coins<10){
+            console.log("Not enough coin to gamble1! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 10 coin Coin toss!";
+        }
+        });
 
     //debug cheat button
         Cheat200.addEventListener("click", function () {
@@ -1557,6 +1862,7 @@ wheremyfuckingcrads()
   console.log("clicked= ", clickedbase, "auto basic on= ", autobaseon);
   messages.innerHTML = "Auto-Clicker Basic enabled!";
   autoclickbegginer.disabled = true;
+  btnbegginer.innerHTML = "Basic clicker active";
           }
           else if(coins<50){
             console.log("Not enough coin! You only have:", coins, "you need 50");
@@ -1578,6 +1884,7 @@ wheremyfuckingcrads()
   console.log("clicked= ", clicked, "auto on= ", autoon);
   messages.innerHTML = "Auto-Clicker 1 enabled";
   autoclick1.disabled = true;
+  btn4.innerHTML = "Starter clicker active";
           }
           else if(coins<200){
             console.log("Not enough coin! You only have:", coins, "you need 200");
@@ -1599,6 +1906,7 @@ wheremyfuckingcrads()
   console.log("clicked x4 = ", clicked3, "auto on x4 = ", autoon3);
   messages.innerHTML = "Auto-Clicker 3 enabled";
   autoclick3.disabled = true;
+  btn6.innerHTML = "Mega-clicker active";
 
 }
           else if (coins<2000) 
@@ -1623,6 +1931,7 @@ btn5.addEventListener("click", function () {
   console.log("clicked x2 = ", clicked2, "auto on x2 = ", autoon2);
   messages.innerHTML = "Auto-Clicker 2 enabled";
   autoclick2.disabled = true;
+  btn5.innerHTML = "Advanced clicker active";
 
 }
           else if (coins<1000) 
@@ -1729,6 +2038,8 @@ function playRandomSound(){
         muted = 1;
         console.log('coins muted!');
         mutebutton.innerHTML = "Unmute the Coins";
+        mutebutton.classList.add("mutemeenabled");
+        mutebutton.classList.remove("mutemedisabled");
 
     }
 
@@ -1737,6 +2048,8 @@ function playRandomSound(){
         muted = 0;
         console.log('coins UNmuted!')
         mutebutton.innerHTML = "Mute the Coins";
+        mutebutton.classList.add("mutemedisabled");
+        mutebutton.classList.remove("mutemeenabled");
     }
 };
 
