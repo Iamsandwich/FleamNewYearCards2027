@@ -139,7 +139,7 @@ font-size: 1.8vh;
 
 .gacha100cardeffect{
     background-image: url(IMG/Backgrounds/holo.gif);
-    opacity: 25%;
+    opacity: 50%;
     width: 12vh;
     height: 15vh;
     position: absolute;
@@ -151,6 +151,8 @@ font-size: 1.8vh;
     text-align: center;
     bottom:0.1vh;
     border-radius: 1vh;
+    mix-blend-mode:soft-light;
+     
 }
 
 .gacha200card{
@@ -216,6 +218,8 @@ font-size: 1.8vh;
     animation-iteration-count: infinite;
 }
 
+
+
 @keyframes fadinginandout2 {
   0%   {opacity: 60%;}
   50%  {opacity: 20%}
@@ -235,6 +239,17 @@ font-size: 1.8vh;
   100% {opacity: 45%}
 }
 
+.gacha100card .cardDecor{
+    animation-name: fadinginandout3;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fadinginandout3 {
+  0%   {opacity: 60%;}
+  50%  {opacity: 0%}
+  100% {opacity: 60%}
+}
 
 .infotext{
     font-size: 80%;
@@ -344,7 +359,32 @@ font-size: 1.8vh;
     border-color:rgb(255, 214, 68);
     border-width: 0.5vh;
     border-style:double;
-    top:0;
+    top:50vh;
+    right: 0px;
+}
+
+
+
+#Bin{
+display: inline-block;
+    position: absolute;
+
+    background-color: #000000;
+    width: 10vw;
+    height: 10vh;
+    margin: 2vh;
+    min-width: 350px;
+    min-height: 220px;
+    text-align: center;
+    color: rgb(255, 117, 117);
+    padding: 1vh;
+    border-radius: 20px;
+    font-size: 1.5vh;
+    border-color:rgb(220, 45, 25);
+    border-width: 0.5vh;
+    border-style:double;
+    top:0vh;
+    right: 0px;
 }
 
 
@@ -476,4 +516,16 @@ transition: transform 0.5s;
     margin-top: 1vh;
 }
 
+
+
+.dragover {
+    opacity: 30%;
+   
+
+}
+
+.draggintosort{
+    opacity: 50%;
+    
+}
 

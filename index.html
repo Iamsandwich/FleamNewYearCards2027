@@ -77,18 +77,29 @@
 
 
                     <button id="Gacha10">Spend 10 coins to spin the Simple gacha</button>
+                    <button id="allowsortingG10">Allow sorting into favs and delete bin</div>
 
-                    <button id="Gacha50">Spend 50 coins to spin the Super gacha</button>
+                   
 
-                    <button id="Gacha100">Spend 100 coins to spin the VIP gacha</button>
+                    
 
-                    <button id="Gacha200">Spend 200 coins to spin the Mega gacha</button>
+                    
 
-                     <div id="cardtablefav", class="draggable">Favourites
+                     <div id="cardtablefav", class="draggable box">Favourites
                         
                         <div id="Tablefav">
-                            
+                       
                         </div>
+
+                    </div>
+
+                    <div id="Bin", class="draggable box" ondrop="dropHandler(event)">Bin (Put Cards here to delete)
+                        
+                        
+                        <div id="Recyclebin">
+
+                        </div>
+                            
                     </div>
 
                     <br>
@@ -97,6 +108,7 @@
                         <div>Your total Simple cards: <span id="cardcounttotalG10">0</span> </div>
                         <div>Card colection: <span id="cardcollectionG10">0</span> out of <div id="totalG10cards">?</div></div>
                         <div id="congratsgacha10"></div>
+                        
 
                         <div id="Table1">
                             <div id="card" class="draggable">
@@ -105,6 +117,7 @@
                         </div>
                     </div>
 
+                     <button id="Gacha50">Spend 50 coins to spin the Super gacha</button>
                     
                     <div id="cardtable2">Card table 2
                         <div>Your total Super cards: <span id="cardcounttotalG50">0</span> </div>
@@ -119,6 +132,8 @@
                         </div>
                     </div>
 
+                    <button id="Gacha100">Spend 100 coins to spin the VIP gacha</button>
+
                      <div id="cardtable3">Card table 3
                         <div>Your total VIP cards: <span id="cardcounttotalG100">0</span> </div>
                         <div>Card colection: <span id="cardcollectionG100">0</span> out of <div id="totalG100cards">?</div></div>
@@ -131,10 +146,13 @@
                         </div>
                     </div>
 
+                    <button id="Gacha200">Spend 200 coins to spin the Mega gacha</button>
+
                     <div id="cardtable4">Card table 4
                         <div>Your total Mega cards: <span id="cardcounttotalG200">0</span> </div>
                         <div>Card colection: <span id="cardcollectionG200">0</span> out of <div id="totalG200cards">?</div></div>
                         <div id="congratsgacha200"></div>
+
 
                         <div id="Table4">
                             <div id="card4" class="draggable">
@@ -153,6 +171,124 @@
 
     
 <script>
+    
+    //button that lets you enable dragging for G10 cards
+    var allowsortingG10Button = document.getElementById("allowsortingG10");
+    allowsortingG10Button.onclick = sortthecards1;
+    var pressed1 = 0;
+    function sortthecards1(){
+        if (pressed1==0){
+            console.log('pressed1 = 1');
+            pressed1 = 1;
+            var sortable = document.querySelectorAll('.gacha10card');
+            sortableCount = sortable.length, i;
+
+            for (i = 0; i < sortableCount; i += 1) {
+            sortable[i].addEventListener('mousedown', dragstartHandler),
+            sortable[i].draggable = true;
+            testgoob = sortable[i];
+
+               //deleting elements upon placing them in the deadly delete zone of death
+         function dragstartHandler() {
+            // select the item element
+            //const thecardimholding = document.querySelector('.gacha10card');
+
+            // attach the dragstart event handler
+            this.addEventListener('dragstart', dragStart);
+
+            // handle the dragstart
+
+            function dragStart(e) {
+            console.log('drag starts...');
+            
+             e.dataTransfer.setData('text/plain', e.target);
+                e.target.classList.add('draggintosort');
+
+                console.log("target id is " + e.target);
+
+                e.dataTransfer.setData('text/plain', e.target);
+                setTimeout(() => {
+                 e.target.classList.add('draggintosort');
+            }, 0);
+
+    
+            }
+
+
+            const boxes = document.querySelectorAll('#cardtablefav, #Bin');
+            console.log(boxes);
+
+            boxes.forEach(box => {
+                box.addEventListener('dragenter', dragEnter)
+                box.addEventListener('dragover', dragOver);
+                box.addEventListener('dragleave', dragLeave);
+                box.addEventListener('drop', drop);
+            });
+
+            function dragEnter(e) {
+                 e.preventDefault();
+                 e.target.classList.add('dragover');
+                
+            }
+
+            function dragOver(e) {
+                e.preventDefault();
+                e.target.classList.add('dragover');
+            }
+
+            function dragLeave(e) {
+                e.target.classList.remove('dragover');
+            }
+
+            function drop(e) {
+                 e.target.classList.remove('dragover');
+
+                     // get the draggable element
+                    const itemcard = e.dataTransfer.getData('text/html');
+                   // const thecradimhavin = document.getElementById(id);
+
+                   // console.log("card id is= "+id);
+                   //console.log("card item is = "+thecradimhavin);
+
+                    // add it to the drop target
+                    e.target.appendChild(testgoob);
+                    console.log("im appending a" + testgoob);
+
+
+                    
+
+            if(e.target.id == "Bin"){
+                console.log("throwing away...")
+                testgoob.remove()
+            }
+
+            }
+                }
+            }
+            
+        }
+
+        else if (pressed1==1){
+            pressed1 = 0;
+            console.log('pressed1 = 0');
+
+            var sortable = document.querySelectorAll('.gacha10card'),
+            sortableCount = sortable.length, i;
+
+            for (i = 0; i < sortableCount; i += 1) {
+            sortable[i].addEventListener('mousedown', dragstartHandler);
+            sortable[i].draggable = false;
+             sortable[i].classList.remove('draggintosort');
+             
+
+        }
+    }
+
+    }
+
+    
+
+
     // Wrap the module in a self-executing anonymous function
 // to avoid leaking variables into global scope:
 function draggablecards() {
@@ -208,7 +344,11 @@ function draggablecards() {
     // on those elements:
     for (i = 0; i < draggableCount; i += 1) {
         draggable[i].addEventListener('mousedown', startDrag);
+        
     }
+
+
+    
 };
 </script>
 
@@ -1229,6 +1369,45 @@ wheremyfuckingcrads()
             percent:"5",
         },
 
+        {
+            image:"IMG/Gacha100/The_Cyrustar_7.jpg",
+            name:"The Cyrustar",
+            number:"7",
+            rarity:4,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/sweet stars.gif",
+            percent:"10",
+        },
+        
+        {
+            image:"IMG/Gacha100/The_Ratdoc_8.jpg",
+            name:"The atdoc",
+            number:"8",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+        
+        {
+            image:"IMG/Gacha100/The_Lovebun_9.jpg",
+            name:"The Lovebun",
+            number:"9",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Elderoct_10.jpg",
+            name:"The Elderoct",
+            number:"10",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/purple sparks.gif",
+            percent:"35",
+        },
     ];
 
                                 var gen = Math.floor(Math.random() * 100);
@@ -1722,6 +1901,144 @@ wheremyfuckingcrads()
         }
         });
 
+        //gamble 50 for 100
+         //Gamble 50 coins to possibly win 100
+    var Gamble50 = document.getElementById("Gamble2");
+    var chance50 = 0;
+    var Coinface2 = document.getElementById("coinflip2");
+    
+    Gamble50.addEventListener("click", function () {
+         function getRandomInt2() 
+                    {
+   //random number from the array
+        chance50 = Math.random();
+//end function, return value, final value basically
+  }
+  getRandomInt2()
+        
+
+        if (coins>=50 && chance50>=0.7){
+            
+            coins = coins+100;
+            count = count+100
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Won the coin toss for 50!");
+           messages.innerHTML = "Won 100 coins!";
+           console.log(chance50);
+           Coinface2.innerHTML=":)";
+           console.log(Coinface2);
+
+        }
+        else if (coins>=50 && chance50<=0.7){
+            coins = coins-50;
+            
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Sorry, lost the coin toss for 50!");
+           messages.innerHTML = "Sorry, lost the coin toss :(";
+           console.log(chance50);
+           Coinface2.innerHTML=":("
+           console.log(Coinface2);
+        }
+        else if (coins<10){
+            console.log("Not enough coin to gamble2! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 50 coin Coin toss!";
+        }
+        });
+
+                //gamble 100 for 200
+         //Gamble 100 coins to possibly win 200
+    var Gamble100 = document.getElementById("Gamble3");
+    var chance100 = 0;
+    var Coinface3 = document.getElementById("coinflip3");
+    
+    Gamble100.addEventListener("click", function () {
+         function getRandomInt3() 
+                    {
+   //random number from the array
+        chance100 = Math.random();
+//end function, return value, final value basically
+  }
+  getRandomInt3()
+        
+
+        if (coins>=100 && chance100>=0.7){
+            
+            coins = coins+200;
+            count = count+200
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Won the coin toss for 100!");
+           messages.innerHTML = "Won 200 coins!";
+           console.log(chance100);
+           Coinface3.innerHTML=":)";
+           console.log(Coinface3);
+
+        }
+        else if (coins>=100 && chance50<=0.7){
+            coins = coins-100;
+            
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Sorry, lost the coin toss for 100!");
+           messages.innerHTML = "Sorry, lost the coin toss :(";
+           console.log(chance100);
+           Coinface3.innerHTML=":("
+           console.log(Coinface3);
+        }
+        else if (coins<100){
+            console.log("Not enough coin to gamble3! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 100 coin Coin toss!";
+        }
+        });
+
+                //gamble 200 for 500
+         //Gamble 200 coins to possibly win 500
+    var Gamble200 = document.getElementById("Gamble4");
+    var chance200 = 0;
+    var Coinface4 = document.getElementById("coinflip4");
+    
+    Gamble200.addEventListener("click", function () {
+         function getRandomInt4() 
+                    {
+   //random number from the array
+        chance200 = Math.random();
+//end function, return value, final value basically
+  }
+  getRandomInt4()
+        
+
+        if (coins>=200 && chance200>=0.7){
+            
+            coins = coins+500;
+            count = count+500
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Won the coin toss for 200!");
+           messages.innerHTML = "Won 500 coins!";
+           console.log(chance200);
+           Coinface4.innerHTML=":)";
+           console.log(Coinface4);
+
+        }
+        else if (coins>=200 && chance50<=0.7){
+            coins = coins-200;
+            
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+            console.log("Sorry, lost the coin toss for 200!");
+           messages.innerHTML = "Sorry, lost the coin toss :(";
+           console.log(chance200);
+           Coinface4.innerHTML=":("
+           console.log(Coinface4);
+        }
+        else if (coins<200){
+            console.log("Not enough coin to gamble4! You only have:", coins);
+           messages.innerHTML = "Not enough coin for the 200 coin Coin toss!";
+        }
+        });
+
     //debug cheat button
         Cheat200.addEventListener("click", function () {
             coins = coins+200;
@@ -1754,6 +2071,7 @@ wheremyfuckingcrads()
             
             RandomCard1();
             draggablecards();
+           
 
             cards1total++;
             totalgacha10.innerHTML = cards1total;
