@@ -32,6 +32,8 @@
             <div><audio id="cardsound2" src="Sounds/Card sound2.wav"></audio></div>
             <div><audio id="coinsound1" src="Sounds/coin1.wav"></audio></div>
             <div><audio id="tearcard" src="Sounds/tearingcard1.mp3"></audio></div>
+            <div><audio id="gambling" src="Sounds/coin noise success.mp3"></audio></div>
+            <div><audio id="failed" src="Sounds/failed.mp3"></audio></div>
             
         
 
@@ -171,7 +173,8 @@
 
     
 <script>
-    
+    //so right now it always chooses next generated card, not the card you're actually holding.
+    //Need to define held card and then do stuff with it
     //button that lets you enable dragging for G10 cards
     var allowsortingG10Button = document.getElementById("allowsortingG10");
     allowsortingG10Button.onclick = sortthecards1;
@@ -1860,8 +1863,12 @@ wheremyfuckingcrads()
     var Gamble10 = document.getElementById("Gamble1");
     var chance = 0;
     var Coinface1 = document.getElementById("coinflip1");
+    var gambling = document.getElementById("gambling");
+    var failed = document.getElementById("failed");
     
     Gamble10.addEventListener("click", function () {
+         
+        
          function getRandomInt() 
                     {
    //random number from the array
@@ -1872,7 +1879,9 @@ wheremyfuckingcrads()
         
 
         if (coins>=10 && chance>=0.7){
+
             
+            gambling.play();
             coins = coins+15;
             count = count+15
             disp.innerHTML = count;
@@ -1881,10 +1890,16 @@ wheremyfuckingcrads()
            messages.innerHTML = "Won 15 coins!";
            console.log(chance);
            Coinface1.innerHTML=":)";
+            Coinface1.classList.remove("coispeen");
+            void Coinface1.offsetWidth;
+           Coinface1.classList.add("coispeen");
            console.log(Coinface1);
+           
+           
 
         }
         else if (coins>=10 && chance<=0.7){
+            failed.play();
             coins = coins-10;
             
             disp.innerHTML = count;
@@ -1892,8 +1907,14 @@ wheremyfuckingcrads()
             console.log("Sorry, lost the coin toss for 10!");
            messages.innerHTML = "Sorry, lost the coin toss :(";
            console.log(chance);
+
+           //Coinface1.style.animation = 'fading 2s 2';
            Coinface1.innerHTML=":("
            console.log(Coinface1);
+           Coinface1.classList.remove("coispeen");
+            void Coinface1.offsetWidth;
+           Coinface1.classList.add("coispeen");
+           
         }
         else if (coins<10){
             console.log("Not enough coin to gamble1! You only have:", coins);
@@ -1918,7 +1939,7 @@ wheremyfuckingcrads()
         
 
         if (coins>=50 && chance50>=0.7){
-            
+            gambling.play();
             coins = coins+100;
             count = count+100
             disp.innerHTML = count;
@@ -1928,11 +1949,14 @@ wheremyfuckingcrads()
            console.log(chance50);
            Coinface2.innerHTML=":)";
            console.log(Coinface2);
+           Coinface2.classList.remove("coispeen");
+            void Coinface2.offsetWidth;
+           Coinface2.classList.add("coispeen");
 
         }
         else if (coins>=50 && chance50<=0.7){
             coins = coins-50;
-            
+            failed.play();
             disp.innerHTML = count;
             MyTotalCoins.innerHTML = coins;
             console.log("Sorry, lost the coin toss for 50!");
@@ -1940,6 +1964,9 @@ wheremyfuckingcrads()
            console.log(chance50);
            Coinface2.innerHTML=":("
            console.log(Coinface2);
+           Coinface2.classList.remove("coispeen");
+            void Coinface2.offsetWidth;
+           Coinface2.classList.add("coispeen");
         }
         else if (coins<10){
             console.log("Not enough coin to gamble2! You only have:", coins);
@@ -1964,7 +1991,7 @@ wheremyfuckingcrads()
         
 
         if (coins>=100 && chance100>=0.7){
-            
+            gambling.play();
             coins = coins+200;
             count = count+200
             disp.innerHTML = count;
@@ -1974,11 +2001,14 @@ wheremyfuckingcrads()
            console.log(chance100);
            Coinface3.innerHTML=":)";
            console.log(Coinface3);
+           Coinface3.classList.remove("coispeen");
+            void Coinface3.offsetWidth;
+           Coinface3.classList.add("coispeen");
 
         }
         else if (coins>=100 && chance50<=0.7){
             coins = coins-100;
-            
+            failed.play();
             disp.innerHTML = count;
             MyTotalCoins.innerHTML = coins;
             console.log("Sorry, lost the coin toss for 100!");
@@ -1986,6 +2016,9 @@ wheremyfuckingcrads()
            console.log(chance100);
            Coinface3.innerHTML=":("
            console.log(Coinface3);
+           Coinface3.classList.remove("coispeen");
+            void Coinface3.offsetWidth;
+           Coinface3.classList.add("coispeen");
         }
         else if (coins<100){
             console.log("Not enough coin to gamble3! You only have:", coins);
@@ -2010,7 +2043,7 @@ wheremyfuckingcrads()
         
 
         if (coins>=200 && chance200>=0.7){
-            
+            gambling.play();
             coins = coins+500;
             count = count+500
             disp.innerHTML = count;
@@ -2020,11 +2053,14 @@ wheremyfuckingcrads()
            console.log(chance200);
            Coinface4.innerHTML=":)";
            console.log(Coinface4);
+           Coinface4.classList.remove("coispeen");
+            void Coinface3.offsetWidth;
+           Coinface4.classList.add("coispeen");
 
         }
         else if (coins>=200 && chance50<=0.7){
             coins = coins-200;
-            
+            failed.play();
             disp.innerHTML = count;
             MyTotalCoins.innerHTML = coins;
             console.log("Sorry, lost the coin toss for 200!");
@@ -2032,6 +2068,9 @@ wheremyfuckingcrads()
            console.log(chance200);
            Coinface4.innerHTML=":("
            console.log(Coinface4);
+           Coinface4.classList.remove("coispeen");
+            void Coinface3.offsetWidth;
+           Coinface4.classList.add("coispeen");
         }
         else if (coins<200){
             console.log("Not enough coin to gamble4! You only have:", coins);
@@ -2346,6 +2385,8 @@ function playRandomSound(){
     var mutebutton = document.getElementById("muteme");
     var muted = 0; 
     var player = document.getElementById("coinsound1");
+    var player2 = document.getElementById("gambling");
+    var player3 = document.getElementById("failed");
 
     
 
@@ -2353,6 +2394,8 @@ function playRandomSound(){
     function mutebuttonactivation(){
     if (muted == 0){
         player.volume = 0;
+        player2.volume = 0;
+        player3.volume = 0;
         muted = 1;
         console.log('coins muted!');
         mutebutton.innerHTML = "Unmute the Coins";
@@ -2363,11 +2406,13 @@ function playRandomSound(){
 
     else if (muted == 1){
         player.volume = 1;
-        muted = 0;
+        player2.volume = 1;
+        player3.volume = 1;
         console.log('coins UNmuted!')
         mutebutton.innerHTML = "Mute the Coins";
         mutebutton.classList.add("mutemedisabled");
         mutebutton.classList.remove("mutemeenabled");
+        muted = 0;
     }
 };
 
