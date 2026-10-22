@@ -32,6 +32,9 @@
             <div><audio id="cardsound2" src="Sounds/Card sound2.wav"></audio></div>
             <div><audio id="coinsound1" src="Sounds/coin1.wav"></audio></div>
             <div><audio id="tearcard" src="Sounds/tearingcard1.mp3"></audio></div>
+            <div><audio id="tearcard2" src="Sounds/tearingcard2.mp3"></audio></div>
+            <div><audio id="tearcard3" src="Sounds/tearingcard3.mp3"></audio></div>
+            <div><audio id="tearcard4" src="Sounds/tearingcard4.mp3"></audio></div>
             <div><audio id="gambling" src="Sounds/coin noise success.mp3"></audio></div>
             <div><audio id="failed" src="Sounds/failed.mp3"></audio></div>
             
@@ -95,7 +98,7 @@
 
                     </div>
 
-                    <div id="Bin", class="draggable box" ondrop="dropHandler(event)">Bin (Put Cards here to delete)
+                    <div id="Bin", class="draggable box" >Bin (Put Cards here to delete)
                         
                         
                         <div id="Recyclebin">
@@ -120,6 +123,7 @@
                     </div>
 
                      <button id="Gacha50">Spend 50 coins to spin the Super gacha</button>
+                     <button id="allowsortingG50">Allow sorting into favs and delete bin</div>
                     
                     <div id="cardtable2">Card table 2
                         <div>Your total Super cards: <span id="cardcounttotalG50">0</span> </div>
@@ -183,13 +187,14 @@
         if (pressed1==0){
             console.log('pressed1 = 1');
             pressed1 = 1;
+            pressed2 = 0;
             var sortable = document.querySelectorAll('.gacha10card');
             sortableCount = sortable.length, i;
 
             for (i = 0; i < sortableCount; i += 1) {
             sortable[i].addEventListener('mousedown', dragstartHandler),
             sortable[i].draggable = true;
-            testgoob = sortable[i];
+           //var testgoob = sortable[i];
 
                //deleting elements upon placing them in the deadly delete zone of death
          function dragstartHandler() {
@@ -207,18 +212,19 @@
              e.dataTransfer.setData('text/plain', e.target);
                 e.target.classList.add('draggintosort');
 
-                console.log("target id is " + e.target);
+                console.log("target is " + e.target);
 
                 e.dataTransfer.setData('text/plain', e.target);
                 setTimeout(() => {
                  e.target.classList.add('draggintosort');
+               //  var testgoob2 = e.target;
             }, 0);
 
     
             }
 
 
-            const boxes = document.querySelectorAll('#cardtablefav, #Bin');
+            const boxes = document.querySelectorAll('#cardtablefav, #Bin, #cardtable1');
             console.log(boxes);
 
             boxes.forEach(box => {
@@ -254,15 +260,44 @@
                    //console.log("card item is = "+thecradimhavin);
 
                     // add it to the drop target
-                    e.target.appendChild(testgoob);
-                    console.log("im appending a" + testgoob);
+                   // testgoob2.style.left = 0 + 'px';
+                   //  testgoob2.style.Top = 0 + 'px';
+                    var testgoob2 = document.querySelector('.draggintosort');
+                    //testgoob2.clientX = 0 + 'px';
+                    //testgoob2.clientY = 0 + 'px';
+                    testgoob2.style.left = 0 + 'px';
+                    testgoob2.style.top = 0 + 'px';
+                    e.target.appendChild(testgoob2);
+                    testgoob2.style.left = 0 + 'px';
+                    testgoob2.style.top = 0 + 'px';
+                     
+                   
+                    
+                    console.log("im appending a" + testgoob2);
+
+                    testgoob2.draggable = false;
+                    testgoob2.classList.remove('draggintosort');
+                    testgoob2.classList.add('deletablelel');
+                     void testgoob2.offsetWidth;
+                     testgoob2.style.left = testgoob2.clientX;
+                     testgoob2.style.top = testgoob2.clientY;
+
+                     
+
+                   
+                    
+                    
 
 
                     
 
             if(e.target.id == "Bin"){
                 console.log("throwing away...")
-                testgoob.remove()
+                
+                var testgoob2 = document.querySelector('.deletablelel');
+                console.log(testgoob2);
+                e.target.appendChild(testgoob2);
+                testgoob2.remove();
             }
 
             }
@@ -276,6 +311,135 @@
             console.log('pressed1 = 0');
 
             var sortable = document.querySelectorAll('.gacha10card'),
+            sortableCount = sortable.length, i;
+
+            for (i = 0; i < sortableCount; i += 1) {
+            //sortable[i].addEventListener('mousedown', dragstartHandler);
+            sortable[i].draggable = false;
+             sortable[i].classList.remove('draggintosort');
+              void sortable[i].offsetWidth;
+             
+
+        }
+    }
+
+    }
+
+
+
+       
+    //button that lets you enable dragging for G50 cards
+    var allowsortingG50Button = document.getElementById("allowsortingG50");
+    allowsortingG50Button.onclick = sortthecards2;
+    var pressed2 = 0;
+    function sortthecards2(){
+        if (pressed2==0){
+            console.log('pressed2 = 1');
+            pressed2 = 1;
+            pressed1 = 0;
+            var sortable = document.querySelectorAll('.gacha50card');
+            sortableCount = sortable.length, i;
+
+            for (i = 0; i < sortableCount; i += 1) {
+            sortable[i].addEventListener('mousedown', dragstartHandler),
+            sortable[i].draggable = true;
+           //var testgoob = sortable[i];
+
+               //deleting elements upon placing them in the deadly delete zone of death
+         function dragstartHandler() {
+            // select the item element
+            //const thecardimholding = document.querySelector('.gacha10card');
+
+            // attach the dragstart event handler
+            this.addEventListener('dragstart', dragStart);
+
+            // handle the dragstart
+
+            function dragStart(e) {
+            console.log('drag starts...');
+            
+             e.dataTransfer.setData('text/plain', e.target);
+                e.target.classList.add('draggintosort');
+
+                console.log("target is " + e.target);
+
+                e.dataTransfer.setData('text/plain', e.target);
+                setTimeout(() => {
+                 e.target.classList.add('draggintosort');
+               //  var testgoob2 = e.target;
+            }, 0);
+
+    
+            }
+
+
+            const boxes = document.querySelectorAll('#cardtablefav, #Bin, #cardtable2');
+            console.log(boxes);
+
+            boxes.forEach(box => {
+                box.addEventListener('dragenter', dragEnter)
+                box.addEventListener('dragover', dragOver);
+                box.addEventListener('dragleave', dragLeave);
+                box.addEventListener('drop', drop);
+            });
+
+            function dragEnter(e) {
+                 e.preventDefault();
+                 e.target.classList.add('dragover');
+                
+            }
+
+            function dragOver(e) {
+                e.preventDefault();
+                e.target.classList.add('dragover');
+            }
+
+            function dragLeave(e) {
+                e.target.classList.remove('dragover');
+            }
+
+            function drop(e) {
+                 e.target.classList.remove('dragover');
+
+                     // get the draggable element
+                    const itemcard = e.dataTransfer.getData('text/html');
+                   // const thecradimhavin = document.getElementById(id);
+
+                   // console.log("card id is= "+id);
+                   //console.log("card item is = "+thecradimhavin);
+
+                    // add it to the drop target
+                    var testgoob2 = document.querySelector('.draggintosort');
+                    testgoob2.style.left = 0 + 'px';
+                    testgoob2.style.top = 0 + 'px';
+                    e.target.appendChild(testgoob2);
+                    console.log("im appending a" + testgoob2);
+
+                   // testgoob2.style.left = testgoob2.clientX;
+                   // testgoob2.style.top = testgoob2.clientY;
+                    
+                    
+
+
+                    
+
+            if(e.target.id == "Bin"){
+                console.log("throwing away...")
+                var testgoob2 = document.querySelector('.draggintosort');
+                testgoob2.remove()
+            }
+
+            }
+                }
+            }
+            
+        }
+
+        else if (pressed2==1){
+            pressed2 = 0;
+            console.log('pressed2 = 0');
+
+            var sortable = document.querySelectorAll('.gacha50card'),
             sortableCount = sortable.length, i;
 
             for (i = 0; i < sortableCount; i += 1) {
@@ -299,9 +463,10 @@ function draggablecards() {
     'use strict';
 
     // Obtain a node list of all elements that have class="draggable":
-    var draggable = document.querySelectorAll('.gacha10card,.gacha50card,.gacha100card,.gacha200card'),
+    var draggable = document.querySelectorAll('.gacha10card:not(.draggingtosort),.gacha50card,.gacha100card,.gacha200card:not(.draggingtosort)'),
         draggableCount = draggable.length, // cache the length
         i; // iterator placeholder
+        
 
     // This function initializes the drag of an element where an
     // event ("mousedown") has occurred:
@@ -347,6 +512,7 @@ function draggablecards() {
     // on those elements:
     for (i = 0; i < draggableCount; i += 1) {
         draggable[i].addEventListener('mousedown', startDrag);
+       
         
     }
 
@@ -1204,6 +1370,10 @@ var cardR = CardRarityValue[imn].textContent;
         newCard.classList.add('gacha50card');
         var Thecard = document.getElementById("card2");  
 
+         //open the card pack sound
+        var opencard2 = document.getElementById("tearcard2");
+        opencard2.play();
+
         console.log("rarity of card is " + cardR);
         console.log("imn= "+(imn+1));
         
@@ -1528,6 +1698,10 @@ var cardR = CardRarityValue[imn].textContent;
         newCard.classList.add('gacha100card');
         var Thecard = document.getElementById("card3");  
 
+         //open the card pack sound
+        var opencard3 = document.getElementById("tearcard3");
+        opencard3.play();
+
         console.log("rarity of card is " + cardR);
         console.log("imn= "+(imn+1));
         
@@ -1760,6 +1934,10 @@ var cardR = CardRarityValue[imn].textContent;
                      
         newCard.classList.add('gacha200card');
         var Thecard = document.getElementById("card4");  
+
+         //open the card pack sound
+        var opencard4 = document.getElementById("tearcard4");
+        opencard4.play();
 
         console.log("rarity of card is " + cardR);
         console.log("imn= "+(imn+1));
