@@ -276,8 +276,8 @@
                     console.log("im appending a" + testgoob2);
 
                     testgoob2.draggable = false;
-                    testgoob2.classList.remove('draggintosort');
-                    testgoob2.classList.add('deletablelel');
+                     testgoob2.classList.remove('draggintosort');
+                   // testgoob2.classList.add('deletablelel');
                      void testgoob2.offsetWidth;
                      testgoob2.style.left = testgoob2.clientX;
                      testgoob2.style.top = testgoob2.clientY;
@@ -291,12 +291,13 @@
 
                     
 
-            if(e.target.id == "Bin"){
+            if (e.target.id == "Bin"){
                 console.log("throwing away...")
-                
-                var testgoob2 = document.querySelector('.deletablelel');
-                console.log(testgoob2);
-                e.target.appendChild(testgoob2);
+
+               //  var testgoob2 = document.querySelector('.draggintosort');
+               // var testgoob2 = document.querySelector('.deletablelel');
+               // console.log(testgoob2);
+              //  e.target.appendChild(testgoob2);
                 testgoob2.remove();
             }
 
