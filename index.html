@@ -37,6 +37,9 @@
             <div><audio id="tearcard4" src="Sounds/tearingcard4.mp3"></audio></div>
             <div><audio id="gambling" src="Sounds/coin noise success.mp3"></audio></div>
             <div><audio id="failed" src="Sounds/failed.mp3"></audio></div>
+            <div><audio id="trash" src="Sounds/bin sound.mp3"></audio></div>
+
+            <div id="musicplayer"></div>
             
         
 
@@ -45,7 +48,10 @@
             <br>
 
             <button id="muteme" class="mutemedisabled">Mute the coins</button>
-            
+            <button id="muteme2" class="mutemedisabled">Mute the card sounds</button>
+
+
+
             <br> <button id="autobase">Spend 50 coins for begginer's Auto-click!</button>
                  <button id="auto">Spend 200 coins for starter Auto-click!</button>
                  <button id="auto2">Spend 1000 coins for advanced Auto-click!</button>
@@ -177,6 +183,8 @@
 
     
 <script>
+
+    var trashnoise = document.getElementById('trash');
     //so right now it always chooses next generated card, not the card you're actually holding.
     //Need to define held card and then do stuff with it
     //button that lets you enable dragging for G10 cards
@@ -299,6 +307,7 @@
                // console.log(testgoob2);
               //  e.target.appendChild(testgoob2);
                 testgoob2.remove();
+                trashnoise.play()
             }
 
             }
@@ -335,6 +344,7 @@
     var pressed2 = 0;
     function sortthecards2(){
         if (pressed2==0){
+            allowsortingG50Button.classList.add('sort10active'); 
             console.log('pressed2 = 1');
             pressed2 = 1;
             pressed1 = 0;
@@ -428,6 +438,7 @@
                 console.log("throwing away...")
                 var testgoob2 = document.querySelector('.draggintosort');
                 testgoob2.remove()
+                trashnoise.play()
             }
 
             }
@@ -447,6 +458,7 @@
             sortable[i].addEventListener('mousedown', dragstartHandler);
             sortable[i].draggable = false;
              sortable[i].classList.remove('draggintosort');
+              allowsortingG50Button.classList.remove('sort10active'); 
              
 
         }
@@ -464,7 +476,7 @@ function draggablecards() {
     'use strict';
 
     // Obtain a node list of all elements that have class="draggable":
-    var draggable = document.querySelectorAll('.gacha10card:not(.draggingtosort),.gacha50card,.gacha100card,.gacha200card:not(.draggingtosort)'),
+    var draggable = document.querySelectorAll('.gacha10card,.gacha50card,.gacha100card,.gacha200card'),
         draggableCount = draggable.length, // cache the length
         i; // iterator placeholder
         
@@ -1515,8 +1527,8 @@ wheremyfuckingcrads()
 
         {
             image:"IMG/Gacha100/The_Hisser_4.jpg",
-            name:"The Frogsong",
-            number:"2",
+            name:"The Hisser",
+            number:"4",
             rarity:2,
             stars:"★★",
             effect:"IMG/Backgrounds/purple sparks.gif",
@@ -1555,7 +1567,7 @@ wheremyfuckingcrads()
         
         {
             image:"IMG/Gacha100/The_Ratdoc_8.jpg",
-            name:"The atdoc",
+            name:"The Ratdoc",
             number:"8",
             rarity:1,
             stars:"★",
@@ -1577,6 +1589,66 @@ wheremyfuckingcrads()
             image:"IMG/Gacha100/The_Elderoct_10.jpg",
             name:"The Elderoct",
             number:"10",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/purple sparks.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Kingsnail_11.jpg",
+            name:"The Kingsnail",
+            number:"11",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/purple sparks.gif",
+            percent:"35",
+        },
+        
+        {
+            image:"IMG/Gacha100/The_Sheepking_12.jpg",
+            name:"The Sheepking",
+            number:"12",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Seashade_14.jpg",
+            name:"The Seashade",
+            number:"14",
+            rarity:1,
+            stars:"★",
+            effect:"IMG/Backgrounds/nodecor.png",
+            percent:"40",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Puggo_13.jpg",
+            name:"The Puggo",
+            number:"13",
+            rarity:4,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/sweet stars.gif",
+            percent:"10",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Mantiger_15.jpg",
+            name:"The Mantiger",
+            number:"15",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/purple sparks.gif",
+            percent:"35",
+        },
+
+        {
+            image:"IMG/Gacha100/The_Frogaro_16.jpg",
+            name:"The Frogaro",
+            number:"16",
             rarity:2,
             stars:"★★",
             effect:"IMG/Backgrounds/purple sparks.gif",
@@ -2595,6 +2667,53 @@ function playRandomSound(){
     }
 };
 
+
+    var mutebutton2 = document.getElementById("muteme2");
+    var muted2 = 0; 
+    var cardssound1 = document.getElementById("tearcard");
+    var cardssound2 = document.getElementById("tearcard2");
+    var cardssound3 = document.getElementById("tearcard3");
+    var cardssound4 = document.getElementById("tearcard4");
+    var cardssound5 = document.getElementById("cardsound1");
+    var cardssound6 = document.getElementById("cardsound2");
+    var trashnoise = document.getElementById('trash');
+    
+
+    mutebutton2.addEventListener("click", mutebuttonactivation2);
+    function mutebuttonactivation2(){
+    if (muted2 == 0){
+        cardssound1.volume = 0;  
+        cardssound2.volume = 0;
+        cardssound3.volume = 0;  
+        cardssound4.volume = 0;  
+        cardssound5.volume = 0; 
+        cardssound6.volume = 0;
+        trashnoise.volume = 0;
+        
+        muted2 = 1;
+        console.log('card noises muted!');
+        mutebutton2.innerHTML = "Unmute the card noises";
+        mutebutton2.classList.add("mutemeenabled");
+        mutebutton2.classList.remove("mutemedisabled");
+
+    }
+
+    else if (muted2 == 1){
+        cardssound1.volume = 1;  
+        cardssound2.volume = 1;
+        cardssound3.volume = 1;  
+        cardssound4.volume = 1;  
+        cardssound5.volume = 1; 
+        cardssound6.volume = 1;
+        trashnoise.volume = 1;
+
+        console.log('card noises UNmuted!')
+        mutebutton2.innerHTML = "Mute the card noises";
+        mutebutton2.classList.add("mutemedisabled");
+        mutebutton2.classList.remove("mutemeenabled");
+        muted2 = 0;
+    }
+};
 
 
 

@@ -182,6 +182,16 @@ font-size: 1.8vh;
   transition: transform 0.2s;
 }
 
+#Gacha10, #allowsortingG10{
+    background-color: #cfbe7d;
+    border-color: #544d34;
+}
+
+.sort10active{
+    background-color: #978640;
+}
+
+
 .gacha10card img , .gacha50card img , .gacha100card img, .gacha200card img{
     width: 80%;
     margin-top: 5%;
@@ -462,7 +472,8 @@ transition: transform 0.5s;
     border-color: transparent;
     margin-bottom: 2vh;
     background-color: #882a44;
-    width:6%;
+    font-size: 1vh;
+    width: fit-content;
 }
 
 .mutemedisabled{
@@ -595,3 +606,4 @@ transition: transform 0.5s;
 .pausespeen{
     animation-play-state: pause;
 }
+
