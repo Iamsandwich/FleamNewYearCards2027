@@ -188,7 +188,7 @@ font-size: 1.8vh;
 }
 
 .sort10active{
-    background-color: #978640;
+    background-color: #554a20;
 }
 
 
@@ -353,7 +353,7 @@ font-size: 1.8vh;
 
 #cardtablefav{
     display: inline-block;
-    position: absolute;
+    
 
     background-image: url(IMG/Backgrounds/pinkvelvet.jpg);
     width: 45vw;
@@ -468,7 +468,7 @@ transition: transform 0.5s;
 }
 
 .mutemeenabled{
-    color: #000000;
+    color: #fa83ab;
     border-color: transparent;
     margin-bottom: 2vh;
     background-color: #882a44;
@@ -588,7 +588,6 @@ transition: transform 0.5s;
 
 .draggintosort{
     opacity: 50%;
-    
 }
 
 .coispeen{
@@ -607,3 +606,38 @@ transition: transform 0.5s;
     animation-play-state: pause;
 }
 
+.imatxyzero{
+    top: 0;
+    left: 0;
+}
+
+.locktheposition{
+    position: fixed;
+}
+
+.unlocktheposition{
+    position: absolute;
+}
+
+.notpressedtablelock {
+ background-color: #ffa9f2;
+ color: #38427c;
+ border-color: #e36fbe;
+}
+
+.pressedtablelock{
+ background-color: #bc57ad;
+ color: #22263d;
+ border-color: #6c2355;
+}
+
+.imatzero.draggintosort{
+    left: 0px;
+    top: 0px;
+    
+}
+
+#Tablefav div{
+  left: 0px;
+    top: 0px;
+}
