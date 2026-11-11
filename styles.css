@@ -357,7 +357,7 @@ font-size: 1.8vh;
 
     background-image: url(IMG/Backgrounds/pinkvelvet.jpg);
     width: 45vw;
-    height: 50vh;
+    height: 40vw;
     margin: 2vh;
     min-width: 350px;
     min-height: 220px;
@@ -596,6 +596,7 @@ transition: transform 0.5s;
 
 .dragover {
     opacity: 30%;
+    background-color: pink;
    
 
 }
@@ -654,4 +655,25 @@ transition: transform 0.5s;
 #Tablefav div{
   left: 0px;
     top: 0px;
+}
+
+.gridcards{
+    position: sticky;
+
+}
+
+#positioncards{
+    background-color: #30305a;
+    color: #e4f4f6;
+    border-color: #000000;
+}
+
+#tablefavinner{
+    width: 45vw;
+  height: 40vw;
+  top: 0;
+ 
+  min-width: 350px;
+  min-height: 220px;
+
 }

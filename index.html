@@ -102,7 +102,8 @@
                         
                         <div id="Tablefav">
                             <button id="stopdraggingfav" class="notpressedtablelock">Lock table</button>
-                            <button id="positioncards">Retest cards position</button>
+                            <button id="positioncards">Reset card positions</button>
+                            <div id="tablefavinner"></div>
                        
                         </div>
 
@@ -222,19 +223,23 @@ function countallcards(){
 
 
 
-     var favtable = document.getElementById("cardtablefav");
+     var favtable = document.getElementById("tablefavinner");
     var positionreset = document.getElementById('positioncards');
     positionreset.onclick = getatzero;
    function getatzero(){
        var favcards = favtable.children;
        console.log(favcards);
-       //cardsinfavcount = favcards.length, i;
-       
+    Array.from(favcards).forEach(stylechange);
+    
 
-       //     for (i = 0; i < cardsinfavcount; i += 1) {
-        favcards.style.left = 0 + "px";
-        favcards.style.top = 0 + "px";
-      //      }
+    function stylechange(elm){
+      //  elm.style.position = "static";
+        elm.style.left = 0 + "px";
+         elm.style.top = 0 + "px";
+      // elm.style.display = "inline-block";
+    }
+
+       
 
          
             
@@ -245,19 +250,23 @@ function countallcards(){
 
 
 
-    var favtable = document.getElementById("cardtablefav");
+    var favtablepos = document.getElementById("cardtablefav");
     var favtablelock = document.getElementById('stopdraggingfav');
     favtablelock.onclick = lockingfavtable;
     var favlock = 0;
     function lockingfavtable(){
         if (favlock==0){
             favlock = 1;
-            favtable.classList.add('locktheposition');
-            favtable.classList.remove('unlocktheposition');
+            favtablepos.classList.add('locktheposition');
+            favtablepos.classList.remove('unlocktheposition');
             favtablelock.innerHTML = "Unlock table";
             favtablelock.classList.add("pressedtablelock");
             favtablelock.classList.remove("notpressedtablelock");
-            
+
+
+            favtablepos.style.top = 50 + "vh";
+             favtablepos.style.right = 0;
+
             
           
 
@@ -265,11 +274,14 @@ function countallcards(){
         }
         else if (favlock==1){
             favlock = 0;
-            favtable.classList.add('unlocktheposition');
-            favtable.classList.remove('locktheposition');
+            favtablepos.classList.add('unlocktheposition');
+            favtablepos.classList.remove('locktheposition');
             favtablelock.innerHTML = "Lock table";
             favtablelock.classList.remove("pressedtablelock");
             favtablelock.classList.add("notpressedtablelock");
+
+             favtablepos.style.top = 50 + "vh";
+             favtablepos.style.right = 0 + "vh";
             
             
         }
@@ -331,7 +343,7 @@ function countallcards(){
             }
 
 
-            const boxes = document.querySelectorAll('#cardtablefav, #Bin, #cardtable1');
+            const boxes = document.querySelectorAll('#tablefavinner, #Bin, #cardtable1');
             console.log(boxes);
 
             boxes.forEach(box => {
@@ -377,7 +389,7 @@ function countallcards(){
                     //testgoob2.style.left = -200 + 'px';
                     //testgoob2.style.top = -200 + 'px';
                   
-                     var favtable = document.getElementById("cardtablefav");
+                     var favtable = document.getElementById("tablefavinner");
                     // favtable.classList.remove('draggable');
                     
                     
@@ -502,7 +514,7 @@ function countallcards(){
             }
 
 
-            const boxes = document.querySelectorAll('#cardtablefav, #Bin, #cardtable2');
+            const boxes = document.querySelectorAll('#tablefavinner, #Bin, #cardtable2');
             console.log(boxes);
 
             boxes.forEach(box => {
@@ -669,7 +681,7 @@ function countallcards(){
             }
 
 
-            const boxes = document.querySelectorAll('#cardtablefav, #Bin, #cardtable3');
+            const boxes = document.querySelectorAll('#tablefavinner, #Bin, #cardtable3');
             console.log(boxes);
 
             boxes.forEach(box => {
@@ -833,7 +845,7 @@ function countallcards(){
             }
 
 
-            const boxes = document.querySelectorAll('#cardtablefav, #Bin, #cardtable4');
+            const boxes = document.querySelectorAll('#tablefavinner, #Bin, #cardtable4');
             console.log(boxes);
 
             boxes.forEach(box => {
