@@ -103,6 +103,7 @@
                         <div id="Tablefav">
                             <button id="stopdraggingfav" class="notpressedtablelock">Lock table</button>
                             <button id="positioncards">Reset card positions</button>
+                            <button id="lastcardpos">Reset LAST card position</button>
                             <div id="tablefavinner"></div>
                        
                         </div>
@@ -245,7 +246,21 @@ function countallcards(){
             
 
     };
-   
+
+
+    var lastcardreset = document.getElementById('lastcardpos');
+    lastcardreset.onclick = lastcardresetfn;
+
+      function lastcardresetfn(){
+       var lastofchildren = favtable.lastChild;
+       console.log(lastofchildren);
+      
+      //  elm.style.position = "static";
+        lastofchildren.style.left = 0 + "px";
+         lastofchildren.style.top = 0 + "px";
+      // elm.style.display = "inline-block";
+    
+      };
     
 
 

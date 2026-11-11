@@ -668,6 +668,12 @@ transition: transform 0.5s;
     border-color: #000000;
 }
 
+#lastcardpos{
+    background-color: #e268c5;
+    color: #491751;
+    border-color: #74135f;
+}
+
 #tablefavinner{
     width: 45vw;
   height: 40vw;
