@@ -250,7 +250,7 @@ font-size: 1.8vh;
   100% {opacity: 45%}
 }
 
-.gacha100card .cardDecor{
+.gacha100card .cardDecor, .gacha200card .cardDecor{
     animation-name: fadinginandout3;
     animation-duration: 8s;
     animation-iteration-count: infinite;
@@ -462,7 +462,21 @@ transition: transform 0.5s;
     border-style: double;
 }
 
-#autobase:disabled, #auto:disabled, #auto2:disabled, #auto3:disabled{
+#auto4{
+    background-image: repeating-linear-gradient(45deg, rgb(53, 129, 73), rgb(123, 190, 134), rgb(158, 208, 247), rgb(53, 129, 73));
+    color: rgb(49, 38, 27);
+    border-color: rgb(56, 113, 35);
+    border-style: double;
+}
+
+#auto5{
+    background-image: repeating-linear-gradient(45deg, rgb(34, 22, 15), rgb(132, 58, 79), rgb(254, 50, 111), rgb(69, 10, 25),  rgb(34, 22, 15));
+    color: rgb(239, 237, 235);
+    border-color: rgb(156, 16, 42);
+    border-style: double;
+}
+
+#autobase:disabled, #auto:disabled, #auto2:disabled, #auto3:disabled, #auto4:disabled, #auto5:disabled{
 
  opacity: 20%;
 }

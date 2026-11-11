@@ -52,10 +52,12 @@
 
 
 
-            <br> <button id="autobase">Spend 50 coins for begginer's Auto-click!</button>
-                 <button id="auto">Spend 200 coins for starter Auto-click!</button>
-                 <button id="auto2">Spend 1000 coins for advanced Auto-click!</button>
-                 <button id="auto3">Spend 2000 coins for mega Auto-click!</button>
+            <br> <button id="autobase">Spend 50 coins for Begginer's Auto-click!</button>
+                 <button id="auto">Spend 200 coins for Starter Auto-click!</button>
+                 <button id="auto2">Spend 1000 coins for Advanced Auto-click!</button>
+                 <button id="auto3">Spend 2000 coins for Mega Auto-click!</button>
+                 <button id="auto4">Spend 4000 coins for Ultra Auto-click!</button>
+                 <button id="auto5">Spend 8000 coins for Premium Auto-click!</button>
                  <button id="Cheat1">Debug cheat button - get 200</button>
             <br>
 
@@ -71,13 +73,13 @@
             <div id="list">
                 <h2>There are xx total cards! <br> How many did you get?</h2>
                     <h3>
-                        Total coins <span id="display">0</span> 
+                        All-time coins earned: <span id="display">0</span> 
                     </h3>
                     <h3>
                        Available coins: <span id="coincount">0</span>
                     </h3>
                     <h4>
-                        Unique cards recieved: <span id="boycount" onchange="Fishy()">0</span>
+                        Unique cards recieved: <span id="boycount">0</span>
                     </h4>
                     <h4>
                         Cards total: <span id="totalboys">0</span>
@@ -188,6 +190,56 @@
     
 <script>
 
+var totalboys = document.getElementById("totalboys");
+var uniqueboys = document.getElementById("boycount");
+
+var G10total = document.getElementById("cardcounttotalG10");
+var G50total = document.getElementById("cardcounttotalG50");
+var G100total = document.getElementById("cardcounttotalG100");
+var G200total = document.getElementById("cardcounttotalG200");
+
+
+var Gcollect10 = document.getElementById("cardcollectionG10");
+var Gcollect50 = document.getElementById("cardcollectionG50");
+var Gcollect100 = document.getElementById("cardcollectionG100");
+var Gcollect200 = document.getElementById("cardcollectionG200");
+
+function countallcards(){
+    totalboys.innerHTML = Number(G10total.textContent) + Number(G50total.textContent) + Number(G100total.textContent) + Number(G200total.textContent) + 1;
+    uniqueboys.innerHTML = Number(Gcollect10.textContent) + Number(Gcollect50.textContent) + Number(Gcollect100.textContent) + Number(Gcollect200.textContent);
+
+
+    console.log("we have a total of", totalboys, "cards" );
+    console.log("we have a total of", uniqueboys, "UNIQUE cards" );
+
+
+}
+
+
+
+
+
+
+
+
+     var favtable = document.getElementById("cardtablefav");
+    var positionreset = document.getElementById('positioncards');
+    positionreset.onclick = getatzero;
+   function getatzero(){
+       var favcards = favtable.children;
+       console.log(favcards);
+       //cardsinfavcount = favcards.length, i;
+       
+
+       //     for (i = 0; i < cardsinfavcount; i += 1) {
+        favcards.style.left = 0 + "px";
+        favcards.style.top = 0 + "px";
+      //      }
+
+         
+            
+
+    };
    
     
 
@@ -223,14 +275,7 @@
         }
     }
 
-    var positionreset = document.getElementById('positioncards');
-    favtablelock.onclick = getatzero;
-    function getatzero(){
-        var favcards = favtable.children;
-        favcards.style.left = 0 + "px";
-        favcards.style.top = 0 + "px";
-
-    }
+   
 
 
     var trashnoise = document.getElementById('trash');
@@ -1044,6 +1089,8 @@ function draggablecards() {
         var autoclick1 = document.getElementById("auto");
         var autoclick2 = document.getElementById("auto2");
         var autoclick3 = document.getElementById("auto3");
+        var autoclick4 = document.getElementById("auto4");
+        var autoclick5 = document.getElementById("auto5");
 
         
         
@@ -2366,7 +2413,75 @@ wheremyfuckingcrads()
             stars:"★",
             effect:"IMG/Backgrounds/nodecor.png",
             percent:"40",
+ 
         },
+
+        {
+            image:"IMG/Gacha200/The_Michbird_2.jpg",
+            name:"The Michbird",
+            number:"2",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/cube.gif",
+            percent:"35",
+ 
+        },
+
+        {
+            image:"IMG/Gacha200/The_Ramguel_3.jpg",
+            name:"The Ramguel",
+            number:"3",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/rainbowsmallstars.gif",
+            percent:"10",
+ 
+        },
+
+        
+        {
+            image:"IMG/Gacha200/The_Sylvibranch_4.JPG",
+            name:"Sylvibranch",
+            number:"4",
+            rarity:4,
+            stars:"★★★★",
+            effect:"IMG/Backgrounds/butterfly.gif",
+            percent:"5",
+ 
+        },
+
+        {
+            image:"IMG/Gacha200/The_Peadam_5.PNG",
+            name:"The Peadam",
+            number:"5",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/cube.gif",
+            percent:"35",
+ 
+        },        
+        
+        {
+            image:"IMG/Gacha200/The_Oldgoat_6.PNG",
+            name:"The Oldgoat",
+            number:"6",
+            rarity:3,
+            stars:"★★★",
+            effect:"IMG/Backgrounds/rainbowsmallstars.gif",
+            percent:"10",
+ 
+        },
+
+        {
+            image:"IMG/Gacha200/The_Mirroran_7.PNG",
+            name:"The Mirroran",
+            number:"7",
+            rarity:2,
+            stars:"★★",
+            effect:"IMG/Backgrounds/cube.gif",
+            percent:"35",
+ 
+        },    
 
     ];
 
@@ -2838,6 +2953,8 @@ wheremyfuckingcrads()
             
             RandomCard1();
             draggablecards();
+            countallcards();
+
            
 
             cards1total++;
@@ -2867,6 +2984,7 @@ wheremyfuckingcrads()
            //this is where we need to put the random card picker code
            RandomCard2();
            draggablecards();
+           countallcards();
 
            cards2total++;
            totalgacha50.innerHTML = cards2total;
@@ -2893,6 +3011,7 @@ wheremyfuckingcrads()
            //this is where we need to put the random card picker code
            RandomCard3();
            draggablecards();
+           countallcards();
 
            cards3total++;
            totalgacha100.innerHTML = cards3total;
@@ -2920,6 +3039,7 @@ wheremyfuckingcrads()
            //this is where we need to put the random card picker code
            RandomCard4();
            draggablecards();
+           countallcards();
 
            cards4total++;
            totalgacha200.innerHTML = cards4total;
@@ -2977,6 +3097,59 @@ wheremyfuckingcrads()
         }
 
 });
+
+
+
+//premium times clicker
+    let btn8 = document.getElementById("auto5");
+        let autoon5 = 0;
+        let clicked5 = 0;
+    btn8.addEventListener("click", function () {
+          if (autoon5==0, clicked5==0, coins>=8000){
+            //paytime
+            coins = coins - 8000;
+  clicked5 = 1;
+  autoon5 = 1;
+  console.log("clicked premium = ", clicked5, "auto on Premium = ", autoon5);
+  messages.innerHTML = "Auto-Clicker 5 enabled";
+  autoclick5.disabled = true;
+  btn8.innerHTML = "Premium clicker active";
+
+}
+          else if (coins<8000) 
+          {  
+            console.log("Not enough coin! You only have:", coins, "you need 8000");
+            messages.innerHTML = "Not enough coin for the Premium auto clicker!";
+       
+          }
+});
+
+
+
+//ultra times clicker
+    let btn7 = document.getElementById("auto4");
+        let autoon4 = 0;
+        let clicked4 = 0;
+    btn7.addEventListener("click", function () {
+          if (autoon4==0, clicked4==0, coins>=4000){
+            //paytime
+            coins = coins - 4000;
+  clicked4 = 1;
+  autoon4 = 1;
+  console.log("clicked ultra = ", clicked4, "auto on ultra = ", autoon4);
+  messages.innerHTML = "Auto-Clicker 4 enabled";
+  autoclick4.disabled = true;
+  btn7.innerHTML = "Ultra-clicker active";
+
+}
+          else if (coins<4000) 
+          {  
+            console.log("Not enough coin! You only have:", coins, "you need 4000");
+            messages.innerHTML = "Not enough coin for the Ultra auto clicker!";
+       
+          }
+});
+
 
 //4 times clicker
     let btn6 = document.getElementById("auto3");
@@ -3086,6 +3259,36 @@ btn5.addEventListener("click", function () {
         else{
         clearInterval(myTimer3);
         console.log("interval x4 clearing")
+        }
+        };
+
+        //Ultra clicker
+        document.getElementById("auto4").onclick = Auto4;
+        function Auto4(){
+        if (autoon4==1) {
+        myTimer4 = setInterval(
+        function Counting() {
+        document.getElementById('button1').click();
+        }, 100)
+        }
+        else{
+        clearInterval(myTimer4);
+        console.log("interval Ultra clearing")
+        }
+        };
+
+        //Premium clicker
+        document.getElementById("auto5").onclick = Auto5;
+        function Auto5(){
+        if (autoon5==1) {
+        myTimer5 = setInterval(
+        function Counting() {
+        document.getElementById('button1').click();
+        }, 50)
+        }
+        else{
+        clearInterval(myTimer5);
+        console.log("interval Premium clearing")
         }
         };
 
