@@ -59,7 +59,13 @@
                  <button id="auto4">Spend 4000 coins for Ultra Auto-click!</button>
                  <button id="auto5">Spend 8000 coins for Premium Auto-click!</button>
                  <button id="Cheat1">Debug cheat button - get 200</button>
+
+
+                 
             <br>
+            <button id="ratfren">Activate the rat for 150 coins!</button>
+            <br>
+
 
             <br>
             <div>Gambling Corner!</div>
@@ -1118,6 +1124,10 @@ function draggablecards() {
         var autoclick3 = document.getElementById("auto3");
         var autoclick4 = document.getElementById("auto4");
         var autoclick5 = document.getElementById("auto5");
+
+
+
+        var rat = document.getElementById("ratfren");
 
         
         
@@ -3079,7 +3089,35 @@ wheremyfuckingcrads()
        }
     )
 
+   //rat
 
+   ratclicked = 0;
+   ratison = 0;
+   rat.addEventListener("click", function () {
+          if (ratison==0, ratclicked==0, coins>=150){
+            //paytime
+            coins = coins - 150;
+            disp.innerHTML = count;
+            MyTotalCoins.innerHTML = coins;
+  ratclicked = 1;
+  ratison = 1;
+  console.log("clicked= ", ratison, "Rat on= ", ratclicked);
+  messages.innerHTML = "Rat enabled!";
+  rat.disabled = true;
+  rat.innerHTML = "The rat is active, it will bring you 50 coins every 6 seconds";
+
+  ratimage = document.createElement('img');
+  ratimage.src = "Img/Silly/rat.gif";
+  
+  rat.appendChild(ratimage);
+
+          }
+          else if(coins<150){
+            console.log("Not enough coin! You only have:", coins, "you need 70");
+            messages.innerHTML = "Not enough coin for the Rat!";
+        }
+
+    });
 
     // auto clicker BEGGINER
         let btnbegginer = document.getElementById("autobase");
@@ -3227,6 +3265,27 @@ btn5.addEventListener("click", function () {
           }
 });
 
+
+        //RAT
+ 
+        document.getElementById("ratfren").onclick = Ratitup;
+        function Ratitup(){
+        if (ratison==1) {
+        myTimer = setInterval(
+        function Counting() {
+     for (let i = 0; i < 50; i++) {
+  
+
+        document.getElementById('button1').click();
+        }
+        }, 6000)
+
+        }
+        else{
+        clearInterval(myTimer);
+        console.log("interval clearing")
+        }
+        };
 
        //begginer clicker
        
